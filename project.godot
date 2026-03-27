@@ -14,11 +14,6 @@ config/name="car_game"
 run/main_scene="uid://dq0j8imbnan16"
 config/features=PackedStringArray("4.6", "Mobile")
 
-[editor]
-
-version_control/plugin_name="GitPlugin"
-version_control/autoload_on_startup=true
-
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/cmd_console/plugin.cfg")

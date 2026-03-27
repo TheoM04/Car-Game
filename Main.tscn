@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dq0j8imbnan16"]
 
-[ext_resource type="PackedScene" uid="uid://cbhkuopky11b4" path="res://Scenes/Car.tscn" id="1_uu6xs"]
-[ext_resource type="PackedScene" uid="uid://dq2s6aajc6hpc" path="res://Scenes/BaseRoad.tscn" id="2_uu6xs"]
+[ext_resource type="PackedScene" uid="uid://cbhkuopky11b4" path="res://Scenes/Car.tscn" id="2_r0du0"]
+[ext_resource type="PackedScene" uid="uid://c6bflewqwbakr" path="res://Scenes/RoadSegment.tscn" id="2_uu6xs"]
 
 [sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_7dm0k"]
 
@@ -29,6 +29,9 @@ environment = SubResource("Environment_0xm2m")
 transform = Transform3D(0.70710677, -0.49999997, 0.5, 0, 0.70710677, 0.7071068, -0.70710677, -0.49999997, 0.5, 0, 0, 0)
 shadow_enabled = true
 
-[node name="Car" parent="." unique_id=1579651371 instance=ExtResource("1_uu6xs")]
+[node name="Car" parent="." unique_id=989504744 instance=ExtResource("2_r0du0")]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 10, 0)
 
-[node name="BaseRoad" parent="." unique_id=445168499 instance=ExtResource("2_uu6xs")]
+[node name="RoadManager" type="Node3D" parent="." unique_id=1919193127]
+
+[node name="BaseRoad" parent="RoadManager" unique_id=445168499 instance=ExtResource("2_uu6xs")]

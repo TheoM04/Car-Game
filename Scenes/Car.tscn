@@ -2,20 +2,17 @@
 
 [ext_resource type="Script" uid="uid://beb1ibup5jao" path="res://Scripts/car.gd" id="1_1k6jk"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_ig7tw"]
-size = Vector3(5, 5, 5)
+[sub_resource type="BoxShape3D" id="BoxShape3D_y2uan"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_0xm2m"]
-size = Vector3(5, 5, 5)
+[sub_resource type="BoxMesh" id="BoxMesh_gvgjh"]
 
-[node name="Car" type="CharacterBody3D" unique_id=1579651371]
+[node name="Car" type="CharacterBody3D" unique_id=989504744]
 physics_interpolation_mode = 1
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
 script = ExtResource("1_1k6jk")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=457349200]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 10)
-shape = SubResource("BoxShape3D_ig7tw")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1057158326]
+shape = SubResource("BoxShape3D_y2uan")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=751228690]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 10)
-mesh = SubResource("BoxMesh_0xm2m")
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1173139905]
+mesh = SubResource("BoxMesh_gvgjh")
