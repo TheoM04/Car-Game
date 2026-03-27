@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://dq0j8imbnan16"]
+
+[ext_resource type="PackedScene" uid="uid://cbhkuopky11b4" path="res://Scenes/Car.tscn" id="1_uu6xs"]
+[ext_resource type="PackedScene" uid="uid://dq2s6aajc6hpc" path="res://Scenes/BaseRoad.tscn" id="2_uu6xs"]
+
+[sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_7dm0k"]
+
+[sub_resource type="Sky" id="Sky_ig7tw"]
+sky_material = SubResource("PhysicalSkyMaterial_7dm0k")
+
+[sub_resource type="Environment" id="Environment_0xm2m"]
+background_mode = 2
+sky = SubResource("Sky_ig7tw")
+tonemap_mode = 2
+glow_enabled = true
+glow_intensity = 0.15
+fog_enabled = true
+fog_light_color = Color(0.6720824, 0.47163177, 0.3010991, 1)
+
+[node name="Main" type="Node3D" unique_id=1971039341]
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1200017913]
+transform = Transform3D(1, 0, 0, 0, 0.976296, 0.21643962, 0, -0.21643962, 0.976296, 0, 17.5, 30)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1617015305]
+environment = SubResource("Environment_0xm2m")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=551519051]
+transform = Transform3D(0.70710677, -0.49999997, 0.5, 0, 0.70710677, 0.7071068, -0.70710677, -0.49999997, 0.5, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Car" parent="." unique_id=1579651371 instance=ExtResource("1_uu6xs")]
+
+[node name="BaseRoad" parent="." unique_id=445168499 instance=ExtResource("2_uu6xs")]
