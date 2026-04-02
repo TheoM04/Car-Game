@@ -1,13 +1,16 @@
 [gd_scene format=3 uid="uid://krlqrgm6r6y8"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_e8qss"]
+[ext_resource type="PackedScene" uid="uid://2mni7734fs3d" path="res://Assets/gltf/dumpster.gltf" id="1_yquvf"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_ke3eq"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_wt3t2"]
+size = Vector3(1, 0.4, 1)
 
 [node name="Obstacle0" type="StaticBody3D" unique_id=689983455]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.04859495, 0)
+
+[node name="dumpster2" parent="." unique_id=1481925946 instance=ExtResource("1_yquvf")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=600264160]
-shape = SubResource("BoxShape3D_e8qss")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1580398344]
-mesh = SubResource("BoxMesh_ke3eq")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.30791438, 0)
+shape = SubResource("BoxShape3D_wt3t2")

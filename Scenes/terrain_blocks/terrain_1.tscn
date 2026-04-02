@@ -2,35 +2,37 @@
 
 [ext_resource type="PackedScene" uid="uid://krlqrgm6r6y8" path="res://Scenes/obstacles/obstacle_0.tscn" id="1_kson5"]
 [ext_resource type="PackedScene" uid="uid://ddr5umh3di77b" path="res://Scenes/obstacles/obstacle_1.tscn" id="2_vjcuh"]
+[ext_resource type="PackedScene" uid="uid://7ipd38l0atck" path="res://Assets/gltf/road_straight.gltf" id="3_vjcuh"]
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_e8qss"]
-size = Vector2(100, 20)
+[sub_resource type="BoxShape3D" id="BoxShape3D_l83et"]
+size = Vector3(11.812012, 0.42019787, 17.276611)
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_kson5"]
-points = PackedVector3Array(-50, 0, -10, -50, 0, 10, 50, 0, -10, 50, 0, 10)
+[node name="AnimatableBody3D" type="AnimatableBody3D" unique_id=1385488638]
 
-[node name="terrain_0" type="MeshInstance3D" unique_id=1209914852]
-mesh = SubResource("PlaneMesh_e8qss")
-
-[node name="ExitPoint" type="Marker3D" parent="." unique_id=1899368519]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10)
+[node name="ExitPoint" type="Marker3D" parent="." unique_id=2022592829]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7.637372)
 
 [node name="Obstacle0" parent="." unique_id=689983455 instance=ExtResource("1_kson5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0.5, -3)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0.38484544, -5)
 
-[node name="Obstacle3" parent="." unique_id=2047072805 instance=ExtResource("1_kson5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.5, -1)
+[node name="Obstacle3" parent="." unique_id=539251024 instance=ExtResource("1_kson5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, 0.38484544, -3)
 
-[node name="Obstacle1" parent="." unique_id=672319056 instance=ExtResource("2_vjcuh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.5, 4)
+[node name="Obstacle1" parent="." unique_id=168672363 instance=ExtResource("2_vjcuh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 0.42176908, 1)
 
-[node name="Obstacle2" parent="." unique_id=1156484078 instance=ExtResource("2_vjcuh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 0.5, 4)
+[node name="Obstacle2" parent="." unique_id=503359387 instance=ExtResource("2_vjcuh")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -4, 0.42176908, 1)
 
-[node name="Obstacle4" parent="." unique_id=1027862894 instance=ExtResource("1_kson5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.5, -2)
+[node name="Obstacle4" parent="." unique_id=1500889392 instance=ExtResource("1_kson5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0.38484544, -4)
 
-[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=2144360537]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2130819612]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.08706665, 0.21058185, -0.9991455)
+shape = SubResource("BoxShape3D_l83et")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=899379844]
-shape = SubResource("ConvexPolygonShape3D_kson5")
+[node name="road_straight2" parent="." unique_id=1094575158 instance=ExtResource("3_vjcuh")]
+transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 4.3199997, 0, 0, -5.3199997)
+
+[node name="road_straight3" parent="." unique_id=1772688243 instance=ExtResource("3_vjcuh")]
+transform = Transform3D(6, 0, 0, 0, 6, 0, 0, 0, 4.3199997, 0, 0, 3.3199997)

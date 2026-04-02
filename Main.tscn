@@ -20,8 +20,9 @@ fog_light_color = Color(0.6720824, 0.47163177, 0.3010991, 1)
 [node name="Main" type="Node3D" unique_id=1971039341]
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1200017913]
-transform = Transform3D(1, 0, 0, 0, 0.8660254, 0.5, 0, -0.5, 0.8660254, 0, 7.5, 12.5)
-fov = 59.1
+transform = Transform3D(1, 0, 0, 0, 0.8681295, 0.4963377, 0, -0.4963377, 0.8681295, 0, 2.4806795, 8.979002)
+visible = false
+fov = 57.1
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1617015305]
 environment = SubResource("Environment_0xm2m")
@@ -31,8 +32,8 @@ transform = Transform3D(-0.5, 0.18744218, -0.84549713, 0, 0.9762959, 0.21643962,
 shadow_enabled = true
 shadow_opacity = 0.75
 
-[node name="Car" parent="." unique_id=989504744 instance=ExtResource("2_r0du0")]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 1, 7.5)
-
 [node name="TerrainController" parent="." unique_id=563873316 instance=ExtResource("3_r0du0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10)
+
+[node name="Car" parent="." unique_id=1049898143 instance=ExtResource("2_r0du0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6.5)
