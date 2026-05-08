@@ -12,6 +12,9 @@ var TerrainBlocks: Array = []
 ## The set of terrian blocks which are currently rendered to viewport
 var terrain_belt: Array[AnimatableBody3D] = []
 @export var terrain_velocity: float = 10.0
+@export var max_speed: float = 20
+@export var boost_multiplier: float = 2.0
+@export var active_speed: float = 0.0
 ## The number of blocks to keep rendered to the viewport
 @export var num_terrain_blocks = 4
 ## Path to directory holding the terrain block scenes
@@ -44,13 +47,19 @@ func _init_blocks(number_of_blocks: int) -> void:
 
 
 func _progress_terrain(delta: float) -> void:
-	for block in terrain_belt:
-		block.position.z += terrain_velocity * delta
+	# Calculate speed: Base speed + (Input Strength * Boost)
+	var throttle = Input.get_action_strength("ui_up")
+	active_speed = terrain_velocity + (throttle * terrain_velocity * boost_multiplier)
+	if active_speed > max_speed: active_speed = max_speed
 
+	for block in terrain_belt:
+		block.position.z += active_speed * delta
+
+	# Spawning logic remains the same
 	if terrain_belt[0].position.z >= block_size/2:
 		var last_terrain = terrain_belt[-1]
 		var first_terrain = terrain_belt.pop_front()
-
+		
 		var block = TerrainBlocks.pick_random().instantiate()
 		_append_to_far_edge(last_terrain, block)
 		add_child(block)
