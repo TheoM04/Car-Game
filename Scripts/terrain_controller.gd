@@ -47,16 +47,17 @@ func _init_blocks(number_of_blocks: int) -> void:
 
 
 func _progress_terrain(delta: float) -> void:
-	# Calculate speed: Base speed + (Input Strength * Boost)
-	var throttle = Input.get_action_strength("ui_up")
-	active_speed = terrain_velocity + (throttle * terrain_velocity * boost_multiplier)
-	if active_speed > max_speed: active_speed = max_speed
+	#var throttle = Input.get_action_strength("ui_up")
+	#active_speed = terrain_velocity + (throttle * terrain_velocity * boost_multiplier)
+	#if active_speed > max_speed: active_speed = max_speed
 
-	for block in terrain_belt:
-		block.position.z += active_speed * delta
+	#terrain_belt[0].position.z += active_speed * delta
+	terrain_belt[0].position.z += terrain_velocity  * delta
+	
+	for i in range(1, terrain_belt.size()):
+		terrain_belt[i].position.z = terrain_belt[i-1].position.z - block_size
 
-	# Spawning logic remains the same
-	if terrain_belt[0].position.z >= block_size/2:
+	if terrain_belt[0].position.z >= block_size:
 		var last_terrain = terrain_belt[-1]
 		var first_terrain = terrain_belt.pop_front()
 		

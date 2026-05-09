@@ -20,13 +20,12 @@ fog_light_color = Color(0.6720824, 0.47163177, 0.3010991, 1)
 
 [node name="Main" type="Node3D" unique_id=1971039341]
 
-[node name="Camera3D" type="Camera3D" parent="." unique_id=1200017913 node_paths=PackedStringArray("target_node", "terrain_controller")]
-transform = Transform3D(1, 0, 0, 0, 0.8681295, 0.4963377, 0, -0.4963377, 0.8681295, 0, 2.4806795, 8.979002)
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1200017913 node_paths=PackedStringArray("target")]
 visible = false
-fov = 57.1
+fov = 91.3
 script = ExtResource("1_r0du0")
-target_node = NodePath("../Car")
-terrain_controller = NodePath("../TerrainController")
+target = NodePath("../Car")
+offset = Vector3(0, 3, 3)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1617015305]
 environment = SubResource("Environment_0xm2m")
@@ -37,8 +36,8 @@ shadow_enabled = true
 shadow_opacity = 0.75
 
 [node name="TerrainController" parent="." unique_id=563873316 instance=ExtResource("3_r0du0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 15)
+block_size = 17.0
 
 [node name="Car" parent="." unique_id=1049898143 instance=ExtResource("2_r0du0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6.5)
-axis_lock_angular_z = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10)
