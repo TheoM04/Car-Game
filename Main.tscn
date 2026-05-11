@@ -21,11 +21,10 @@ fog_light_color = Color(0.6720824, 0.47163177, 0.3010991, 1)
 [node name="Main" type="Node3D" unique_id=1971039341]
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=1200017913 node_paths=PackedStringArray("target")]
-visible = false
 fov = 91.3
 script = ExtResource("1_r0du0")
 target = NodePath("../Car")
-offset = Vector3(0, 3, 3)
+offset = Vector3(0, 3.5, 2.5)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1617015305]
 environment = SubResource("Environment_0xm2m")
