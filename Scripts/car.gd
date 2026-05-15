@@ -1,7 +1,10 @@
 extends CharacterBody3D
 
 const BASE_SPEED = 5.0
-const DRIFT_SPEED = 4.0
+const DRIFT_SPEED = 6.0
+
+const BASE_STEERING_SENSITIVITY = 1.0
+const DRIFT_STEERING_SENSITIVITY = 0.75
 
 var steering_input = 0.0
 var current_yaw = 0.0 
@@ -34,8 +37,7 @@ func _apply_movement(delta: float, is_drifting: bool) -> void:
 	var current_speed = DRIFT_SPEED if is_drifting else BASE_SPEED 
 	
 	# 2. ACCUMULATE ROTATION
-	# We rotate faster during a drift for that "swinging" effect
-	var rotation_factor = 0.9 if is_drifting else 1.0
+	var rotation_factor = DRIFT_STEERING_SENSITIVITY if is_drifting else BASE_STEERING_SENSITIVITY
 	current_yaw -= steering_input * (turn_sensitivity * rotation_factor) * delta
 	rotation.y = current_yaw
 	
@@ -48,4 +50,8 @@ func _apply_movement(delta: float, is_drifting: bool) -> void:
 	rotation.z = lerp_angle(rotation.z, target_tilt, 5.0 * delta)
 	
 	velocity.z = 0
+	if is_drifting:
+		print("drifting")
+	else:
+		print("\n")
 	move_and_slide()
