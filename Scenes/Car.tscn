@@ -6,6 +6,35 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_1sfmx"]
 size = Vector3(0.75, 0.55, 1.57)
 
+[sub_resource type="Curve" id="Curve_go66d"]
+_data = [Vector2(0, 1), 0.0, 0.03021426, 0, 0, Vector2(0.99719095, 0.3159346), -0.23105016, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_1sfmx"]
+resource_local_to_scene = true
+curve = SubResource("Curve_go66d")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_go66d"]
+resource_local_to_scene = true
+lifetime_randomness = 0.25
+particle_flag_rotate_y = true
+angle_min = 1.0728835e-05
+angle_max = 360.00003
+spread = 15.0
+initial_velocity_min = 2.0
+initial_velocity_max = 4.0
+angular_velocity_min = -180.00002
+angular_velocity_max = 179.99998
+gravity = Vector3(0, 1, 0)
+scale_curve = SubResource("CurveTexture_1sfmx")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_go66d"]
+albedo_color = Color(0.5258937, 0.52589417, 0.525894, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_1sfmx"]
+material = SubResource("StandardMaterial3D_go66d")
+size = Vector3(0.2, 0.2, 0.2)
+
 [node name="Car" type="CharacterBody3D" unique_id=989504744]
 physics_interpolation_mode = 1
 script = ExtResource("1_1k6jk")
@@ -16,3 +45,17 @@ transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 0,
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=596478767]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7669185, 0)
 shape = SubResource("BoxShape3D_1sfmx")
+
+[node name="LeftSmoke" type="GPUParticles3D" parent="." unique_id=639588807]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0.35, 0.49209058, 0.60257655)
+amount = 30
+lifetime = 0.5
+process_material = SubResource("ParticleProcessMaterial_go66d")
+draw_pass_1 = SubResource("BoxMesh_1sfmx")
+
+[node name="RightSmoke" type="GPUParticles3D" parent="." unique_id=1959208806]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -0.35, 0.49209058, 0.60257655)
+amount = 30
+lifetime = 0.5
+process_material = SubResource("ParticleProcessMaterial_go66d")
+draw_pass_1 = SubResource("BoxMesh_1sfmx")

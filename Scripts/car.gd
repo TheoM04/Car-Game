@@ -50,8 +50,4 @@ func _apply_movement(delta: float, is_drifting: bool) -> void:
 	rotation.z = lerp_angle(rotation.z, target_tilt, 5.0 * delta)
 	
 	velocity.z = 0
-	if is_drifting:
-		print("drifting")
-	else:
-		print("\n")
 	move_and_slide()
