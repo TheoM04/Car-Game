@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://b7tghduhdgn3k" path="res://Assets/gltf/car_taxi.gltf" id="2_go66d"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1sfmx"]
-size = Vector3(0.75, 0.55, 1.57)
+size = Vector3(0.7, 0.55, 1.6)
 
 [sub_resource type="Curve" id="Curve_go66d"]
 _data = [Vector2(0, 1), 0.0, 0.03021426, 0, 0, Vector2(0.99719095, 0.3159346), -0.23105016, 0.0, 0, 0]
@@ -35,11 +35,14 @@ albedo_color = Color(0.5258937, 0.52589417, 0.525894, 1)
 material = SubResource("StandardMaterial3D_go66d")
 size = Vector3(0.2, 0.2, 0.2)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_go66d"]
+size = Vector3(0.75, 0.6, 1.65)
+
 [node name="Car" type="CharacterBody3D" unique_id=989504744]
 physics_interpolation_mode = 1
 script = ExtResource("1_1k6jk")
 
-[node name="car_taxi2" parent="." unique_id=1990908043 instance=ExtResource("2_go66d")]
+[node name="CarMesh" parent="." unique_id=1990908043 instance=ExtResource("2_go66d")]
 transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, 0, 0.5756148, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=596478767]
@@ -59,3 +62,9 @@ amount = 30
 lifetime = 0.5
 process_material = SubResource("ParticleProcessMaterial_go66d")
 draw_pass_1 = SubResource("BoxMesh_1sfmx")
+
+[node name="CrashDetector" type="Area3D" parent="." unique_id=1022374753]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CrashDetector" unique_id=22497357]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.767, 0)
+shape = SubResource("BoxShape3D_go66d")
