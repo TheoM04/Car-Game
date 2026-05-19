@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bvus26nrx6hb0"
+path="res://.godot/imported/TallBuilding01.obj-5fdf1673b0f857b25825d7483b930bbe.mesh"
+
+[deps]
+
+files=["res://.godot/imported/TallBuilding01.obj-5fdf1673b0f857b25825d7483b930bbe.mesh"]
+
+source_file="res://Assets/voxel_desert_town/Tall Building 01/Package/TallBuilding01.obj"
+dest_files=["res://.godot/imported/TallBuilding01.obj-5fdf1673b0f857b25825d7483b930bbe.mesh", "res://.godot/imported/TallBuilding01.obj-5fdf1673b0f857b25825d7483b930bbe.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

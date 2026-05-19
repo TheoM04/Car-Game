@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://dddntxm8cfa7x"
+path="res://.godot/imported/TinyBuilding01.obj-15d99d339e7ac126520deb7ef1f49eaa.mesh"
+
+[deps]
+
+files=["res://.godot/imported/TinyBuilding01.obj-15d99d339e7ac126520deb7ef1f49eaa.mesh"]
+
+source_file="res://Assets/voxel_desert_town/Tiny Building/Package/TinyBuilding01.obj"
+dest_files=["res://.godot/imported/TinyBuilding01.obj-15d99d339e7ac126520deb7ef1f49eaa.mesh", "res://.godot/imported/TinyBuilding01.obj-15d99d339e7ac126520deb7ef1f49eaa.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

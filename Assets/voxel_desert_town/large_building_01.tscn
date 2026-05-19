@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://2kav37n00shi"]
+
+[ext_resource type="ArrayMesh" uid="uid://bap1ce1a8s51k" path="res://Assets/voxel_desert_town/Large Building 01/Package/LargeBuilding01.obj" id="1_phbm7"]
+
+[node name="LargeBuilding01" type="Node3D" unique_id=1703079714]
+
+[node name="LargeBuilding01" type="MeshInstance3D" parent="." unique_id=1539042780]
+mesh = ExtResource("1_phbm7")

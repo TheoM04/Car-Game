@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bikq1r5grj2s2"
+path="res://.godot/imported/Waterwheel_Flume_Support_Brace.obj-8c6ebc76e4c98704e616e1d75793d343.mesh"
+
+[deps]
+
+files=["res://.godot/imported/Waterwheel_Flume_Support_Brace.obj-8c6ebc76e4c98704e616e1d75793d343.mesh"]
+
+source_file="res://Assets/modular_village_collection/Modular Village/Waterwheel_Flume_Support_Brace.obj"
+dest_files=["res://.godot/imported/Waterwheel_Flume_Support_Brace.obj-8c6ebc76e4c98704e616e1d75793d343.mesh", "res://.godot/imported/Waterwheel_Flume_Support_Brace.obj-8c6ebc76e4c98704e616e1d75793d343.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

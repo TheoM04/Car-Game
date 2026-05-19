@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://bap1ce1a8s51k"
+path="res://.godot/imported/LargeBuilding01.obj-26f99d5d4ba992420758ce890cada5d9.mesh"
+
+[deps]
+
+files=["res://.godot/imported/LargeBuilding01.obj-26f99d5d4ba992420758ce890cada5d9.mesh"]
+
+source_file="res://Assets/voxel_desert_town/Large Building 01/Package/LargeBuilding01.obj"
+dest_files=["res://.godot/imported/LargeBuilding01.obj-26f99d5d4ba992420758ce890cada5d9.mesh", "res://.godot/imported/LargeBuilding01.obj-26f99d5d4ba992420758ce890cada5d9.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

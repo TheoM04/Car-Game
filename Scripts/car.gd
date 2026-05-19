@@ -129,7 +129,7 @@ func trigger_game_over() -> void:
 	
 	var terrain_controllers = get_tree().get_nodes_in_group("terrain_controller")
 	for terrain in terrain_controllers:
-		terrain.active_speed = 0.0
+		terrain.should_move = 0
 		terrain.set_physics_process(false)
 	
 	print("💀 TOTALED! Game Over. Press Spacebar to Restart.")
