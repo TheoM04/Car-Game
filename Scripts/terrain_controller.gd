@@ -21,6 +21,9 @@ var terrain_belt: Array[AnimatableBody3D] = []
 @export_dir var terrian_blocks_path = "res://Scenes/terrain_blocks"
 @export var block_size: float = 17.277
 
+@export var x_offset: float = 0
+@export var y_offset: float = 0
+@export var y_rotation: float = 0
 
 func _ready() -> void:
 	_load_terrain_scenes(terrian_blocks_path)
@@ -70,3 +73,6 @@ func _progress_terrain(delta: float) -> void:
 
 func _append_to_far_edge(target_block: AnimatableBody3D, appending_block: AnimatableBody3D) -> void:
 	appending_block.position.z = target_block.position.z - block_size
+	appending_block.position.x = x_offset
+	appending_block.position.y = y_offset
+	appending_block.rotation.y = y_rotation

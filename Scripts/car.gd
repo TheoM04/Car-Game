@@ -127,8 +127,8 @@ func trigger_game_over() -> void:
 	scraping_obstacles.clear()
 	_update_particles(false)
 	
-	var terrain = get_tree().get_first_node_in_group("terrain_controller")
-	if terrain:
+	var terrain_controllers = get_tree().get_nodes_in_group("terrain_controller")
+	for terrain in terrain_controllers:
 		terrain.active_speed = 0.0
 		terrain.set_physics_process(false)
 	
