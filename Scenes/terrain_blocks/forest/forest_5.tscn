@@ -1,0 +1,59 @@
+[gd_scene format=3 uid="uid://dlgrnkroui8x3"]
+
+[ext_resource type="PackedScene" uid="uid://dbryn3knl85gm" path="res://Assets/gltf/Crush_Barrier.glb" id="1_s3ehe"]
+[ext_resource type="PackedScene" uid="uid://bc4h7gonwygau" path="res://Assets/gltf/Bush_1_G_Color1.gltf" id="2_rplju"]
+[ext_resource type="PackedScene" uid="uid://cbh26d2gasfaj" path="res://Assets/gltf/Tree_2_E_Color1.gltf" id="3_s3ehe"]
+[ext_resource type="PackedScene" uid="uid://b5dm6ioom2ftu" path="res://Assets/gltf/Bush_1_F_Color1.gltf" id="4_rplju"]
+[ext_resource type="PackedScene" uid="uid://bticmd6kvan5j" path="res://Assets/gltf/Tree_1_B_Color1.gltf" id="5_rplju"]
+[ext_resource type="PackedScene" uid="uid://btgewcy41m3tx" path="res://Assets/gltf/Rock_3_L_Color1.gltf" id="6_2ebba"]
+[ext_resource type="PackedScene" uid="uid://dn1y5rklcwblh" path="res://Assets/gltf/Grass_2_C_Color1.gltf" id="7_j2fcj"]
+[ext_resource type="PackedScene" uid="uid://0l8gd37skcdw" path="res://Assets/gltf/Bush_2_B_Color1.gltf" id="8_6nfsn"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_xggcd"]
+size = Vector3(3, 0.015, 3)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_82djj"]
+albedo_color = Color(0, 0.4149491, 0, 1)
+
+[node name="Forest0" type="AnimatableBody3D" unique_id=220152644]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1380137439]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 3.172, 0, 0.0045697093, -3.1568775)
+mesh = SubResource("BoxMesh_xggcd")
+surface_material_override/0 = SubResource("StandardMaterial3D_82djj")
+
+[node name="Barrier" type="Node3D" parent="." unique_id=1371877792]
+transform = Transform3D(1.415, 0, 0, 0, 1.415, 0, 0, 0, 1.415, 0.58793706, -0.016519904, -0.5867113)
+
+[node name="Crush_Barrier" parent="Barrier" unique_id=606836755 instance=ExtResource("1_s3ehe")]
+transform = Transform3D(0.115, 0, 0, 0, 0.115, 0, 0, 0, 0.115, -1.1075628, 0.099734575, 1.313331)
+
+[node name="Crush_Barrier2" parent="Barrier" unique_id=2098073226 instance=ExtResource("1_s3ehe")]
+transform = Transform3D(0.115, 0, 0, 0, 0.115, 0, 0, 0, 0.115, -0.4191389, 0.099734575, 1.313331)
+
+[node name="Crush_Barrier3" parent="Barrier" unique_id=655403101 instance=ExtResource("1_s3ehe")]
+transform = Transform3D(0.115, 0, 0, 0, 0.115, 0, 0, 0, 0.115, 0.27029353, 0.099734575, 1.313331)
+
+[node name="Bush_1_G_Color12" parent="." unique_id=1592957839 instance=ExtResource("2_rplju")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.058392525, 4.7683716e-07, -7.090707)
+
+[node name="Bush_1_G_Color15" parent="." unique_id=197992549 instance=ExtResource("2_rplju")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.016305208, 0, -5.800565)
+
+[node name="Tree_2_E_Color12" parent="." unique_id=1002053398 instance=ExtResource("3_s3ehe")]
+transform = Transform3D(0.4595, 0, 0.15519258, 0, 0.485, 0, -0.15519258, 0, 0.4595, -0.09566426, 0, -1.3974683)
+
+[node name="Bush_1_F_Color12" parent="." unique_id=7459074 instance=ExtResource("4_rplju")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.16747135, 0, 0.21317005)
+
+[node name="Tree_1_B_Color12" parent="." unique_id=201744788 instance=ExtResource("5_rplju")]
+transform = Transform3D(0.995, 0, 0, 0, 0.995, 0, 0, 0, 0.995, -0.025818348, 0, -4.739459)
+
+[node name="Rock_3_L_Color12" parent="." unique_id=250177322 instance=ExtResource("6_2ebba")]
+transform = Transform3D(0.7184906, 0, 0.6955367, 0, 1, 0, -0.6955367, 0, 0.7184906, 0.2828641, 0, -2.8430307)
+
+[node name="Grass_2_C_Color12" parent="." unique_id=1362273821 instance=ExtResource("7_j2fcj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.1508316, 0, 0.54006624)
+
+[node name="Bush_2_B_Color12" parent="." unique_id=278713426 instance=ExtResource("8_6nfsn")]
+transform = Transform3D(0.9408867, 0, 0.3387215, 0, 1, 0, -0.3387215, 0, 0.9408867, -1.103863, 0, -1.6446617)

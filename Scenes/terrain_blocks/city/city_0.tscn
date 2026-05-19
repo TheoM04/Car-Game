@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://xa34fhetimio"]
+
+[ext_resource type="PackedScene" uid="uid://bfug4nb7afraa" path="res://Assets/gltf/building_A.gltf" id="1_rcsn5"]
+
+[node name="City0" type="AnimatableBody3D" unique_id=122028084]
+
+[node name="building_A2" parent="." unique_id=1242858299 instance=ExtResource("1_rcsn5")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
