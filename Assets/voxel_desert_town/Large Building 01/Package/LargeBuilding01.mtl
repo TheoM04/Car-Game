@@ -1,8 +1,3 @@
-# MagicaVoxel @ Ephtracy
-
-newmtl palette
-illum 1
-Ka 0.000 0.000 0.000
-Kd 1.000 1.000 1.000
-Ks 0.000 0.000 0.000
-map_Kd LargeBuilding01.png
+version https://git-lfs.github.com/spec/v1
+oid sha256:6017544ec923aacb6cad3a8c7be523a9817ffb3da09d5c2ffb714d980957873e
+size 147
