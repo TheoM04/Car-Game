@@ -84,7 +84,7 @@ func _apply_movement(delta: float, is_drifting: bool) -> void:
 	var target_tilt = -steering_input * 0.1
 	rotation.z = lerp_angle(rotation.z, target_tilt, 5.0 * delta)
 	
-	_update_particles(is_drifting)
+	_update_particles(true)
 	
 	velocity.z = 0
 	velocity.y = 0
