@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://b17dx64lxdf4v"]
 
-[ext_resource type="PackedScene" uid="uid://dbryn3knl85gm" path="res://Assets/gltf/Crush_Barrier.glb" id="4_de8v8"]
+[ext_resource type="PackedScene" uid="uid://dbryn3knl85gm" path="res://Assets/gltf/traffic/Crush_Barrier.glb" id="4_de8v8"]
 [ext_resource type="PackedScene" uid="uid://bc4h7gonwygau" path="res://Assets/gltf/Bush_1_G_Color1.gltf" id="5_b1675"]
 [ext_resource type="PackedScene" uid="uid://cydgq74g2at4m" path="res://Assets/gltf/Tree_1_A_Color1.gltf" id="5_de8v8"]
 [ext_resource type="PackedScene" uid="uid://csf2hhfrnbp3a" path="res://Assets/gltf/Rock_3_F_Color1.gltf" id="5_ilfjd"]

@@ -1,0 +1,50 @@
+[gd_scene format=3 uid="uid://dhyyf436m70uf"]
+
+[ext_resource type="PackedScene" uid="uid://dpysrkrvwryk1" path="res://Assets/gltf/traffic/Manhole Covers/Manhole_Cover_002.glb" id="1_qebw6"]
+[ext_resource type="PackedScene" uid="uid://dtjvguwwnh8ii" path="res://Assets/gltf/traffic/Cones/Traffic_Cone.glb" id="2_eesln"]
+[ext_resource type="PackedScene" uid="uid://cwq5ysbx4r4vd" path="res://Assets/gltf/traffic/Cones/Broken/Broken_Traffic_Cone_002.glb" id="3_44hv6"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_g86fc"]
+size = Vector3(0.23153305, 0.4942627, 0.20937347)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wvw11"]
+size = Vector3(0.23153305, 0.4942627, 0.20937347)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_44hv6"]
+size = Vector3(0.23153305, 0.4942627, 0.20937347)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fjm6b"]
+size = Vector3(0.23153305, 0.4942627, 0.20937347)
+
+[node name="Obstacle" type="StaticBody3D" unique_id=168672363 groups=["obstacle"]]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=42022298]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4962101, 0.17980957, 0.009311676)
+shape = SubResource("BoxShape3D_g86fc")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="." unique_id=840672407]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.001790911, 0.17980957, 0.5091541)
+shape = SubResource("BoxShape3D_wvw11")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="." unique_id=21564003]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.001790911, 0.09906006, -0.5286416)
+shape = SubResource("BoxShape3D_44hv6")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="." unique_id=1537585587]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5054265, 0.17980957, -0.0026273727)
+shape = SubResource("BoxShape3D_fjm6b")
+
+[node name="Traffic_Cone2" parent="." unique_id=1696629929 instance=ExtResource("2_eesln")]
+transform = Transform3D(0.185, 0, 0, 0, 0.185, 0, 0, 0, 0.185, -0.4985748, 0, -0.0015469193)
+
+[node name="Traffic_Cone" parent="." unique_id=614445985 instance=ExtResource("2_eesln")]
+transform = Transform3D(0.185, 0, 0, 0, 0.185, 0, 0, 0, 0.185, -0.0033912063, 0, 0.5067802)
+
+[node name="Traffic_Cone3" parent="." unique_id=65575954 instance=ExtResource("2_eesln")]
+transform = Transform3D(0.185, 0, 0, 0, 0.185, 0, 0, 0, 0.185, 0.0012886524, 0, -0.528244)
+
+[node name="Broken_Traffic_Cone_002" parent="." unique_id=1458406585 instance=ExtResource("3_44hv6")]
+transform = Transform3D(0.19, 0, 0, 0, 0.19, 0, 0, 0, 0.19, 0.52665657, 0, 0.00061649084)
+
+[node name="Manhole_Cover_002" parent="." unique_id=526945641 instance=ExtResource("1_qebw6")]
+transform = Transform3D(0.095, 0, 0, 0, 0.095, 0, 0, 0, 0.095, 0, 0, 0)

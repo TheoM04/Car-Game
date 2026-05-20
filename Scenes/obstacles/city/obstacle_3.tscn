@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://cov8wsjlrg1b0"]
+
+[ext_resource type="PackedScene" uid="uid://5mqevusfqy1" path="res://Assets/gltf/trafficlight_B.gltf" id="1_uugra"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_x8nsr"]
+size = Vector3(0.122882366, 1.6840942, 0.12774849)
+
+[node name="Obstacle1" type="StaticBody3D" unique_id=168672363 groups=["obstacle"]]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1490398746]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0030109882, 0.7805237, 0.00049877167)
+shape = SubResource("BoxShape3D_x8nsr")
+
+[node name="trafficlight_B2" parent="." unique_id=543727794 instance=ExtResource("1_uugra")]
+transform = Transform3D(2.25, 0, 0, 0, 2.25, 0, 0, 0, 2.25, 0, 0, 0)

@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://dbryn3knl85gm"
-path="res://.godot/imported/Crush_Barrier.glb-52c8b9f4d382039d18b8ae23e5987f0f.scn"
+uid="uid://bdpk2vqrc62ie"
+path="res://.godot/imported/Wood_Road_Block_XSmall.glb-1968ef96f8da810318e3b8d253bf9c92.scn"
 
 [deps]
 
-source_file="res://Assets/gltf/Crush_Barrier.glb"
-dest_files=["res://.godot/imported/Crush_Barrier.glb-52c8b9f4d382039d18b8ae23e5987f0f.scn"]
+source_file="res://Assets/gltf/traffic/Road Blocks/Wooden/XSmall/Wood_Road_Block_XSmall.glb"
+dest_files=["res://.godot/imported/Wood_Road_Block_XSmall.glb-1968ef96f8da810318e3b8d253bf9c92.scn"]
 
 [params]
 

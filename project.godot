@@ -14,6 +14,11 @@ config/name="car_game"
 run/main_scene="uid://dq0j8imbnan16"
 config/features=PackedStringArray("4.6", "Mobile")
 
+[display]
+
+window/size/viewport_width=1280
+window/size/viewport_height=720
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/asset_placer/plugin.cfg", "res://addons/cmd_console/plugin.cfg")

@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://b1kxbtpakhlvo"]
+
+[ext_resource type="PackedScene" uid="uid://hyunopwf2upp" path="res://Assets/gltf/traffic/Road Blocks/Wooden/Small/Wood_Road_Block_Small_002.glb" id="1_g86fc"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_g86fc"]
+size = Vector3(1.1061707, 1.6289063, 0.15878296)
+
+[node name="Obstacle1" type="StaticBody3D" unique_id=168672363 groups=["obstacle"]]
+
+[node name="Wood_Road_Block_Small_002" parent="." unique_id=1884196549 instance=ExtResource("1_g86fc")]
+transform = Transform3D(0.185, 0, 0, 0, 0.185, 0, 0, 0, 0.185, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=42022298]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.002456665, 0.758667, 0.0031585693)
+shape = SubResource("BoxShape3D_g86fc")

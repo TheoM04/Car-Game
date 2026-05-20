@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://chhn16dyfxhwk"]
+
+[ext_resource type="PackedScene" uid="uid://v2thsfcrggdq" path="res://Assets/gltf/car_stationwagon.gltf" id="1_kw2e3"]
+[ext_resource type="PackedScene" uid="uid://c3sekv8cbv8y2" path="res://Assets/gltf/traffic/Cones/Warning_Triangle.glb" id="2_kw2e3"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kw2e3"]
+size = Vector3(0.25976563, 0.3355713, 0.29386902)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bptfj"]
+size = Vector3(0.7158203, 0.42138672, 1.7716064)
+
+[node name="Obstacle1" type="StaticBody3D" unique_id=168672363 groups=["obstacle"]]
+
+[node name="car_stationwagon2" parent="." unique_id=942726001 instance=ExtResource("1_kw2e3")]
+transform = Transform3D(-1.9999998, 0, -1.7484554e-07, 0, 2, 0, 1.7484554e-07, 0, -1.9999998, -0.04985988, 0.10861325, -0.9869592)
+
+[node name="Warning_Triangle" parent="." unique_id=803600478 instance=ExtResource("2_kw2e3")]
+transform = Transform3D(0.205, 0, 0, 0, 0.205, 0, 0, 0, 0.205, 0, 0, 0.59396446)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=368623254]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00390625, 0.17999268, 0.6314163)
+shape = SubResource("BoxShape3D_kw2e3")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="." unique_id=369325401]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.072753906, 0.28930664, -0.9631958)
+shape = SubResource("BoxShape3D_bptfj")

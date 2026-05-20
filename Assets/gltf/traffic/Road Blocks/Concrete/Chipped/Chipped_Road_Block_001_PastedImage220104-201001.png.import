@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bn2whouh8vg5o"
-path.s3tc="res://.godot/imported/Crush_Barrier_PastedImage220104-201001.png-7cba46f4218c5c0ff5498e04839cfed3.s3tc.ctex"
+uid="uid://boapkkkfvg3p5"
+path.s3tc="res://.godot/imported/Chipped_Road_Block_001_PastedImage220104-201001.png-811a321ba426cb79f31e5c6bf14198a5.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -14,8 +14,8 @@ generator_parameters={
 
 [deps]
 
-source_file="res://Assets/gltf/Crush_Barrier_PastedImage220104-201001.png"
-dest_files=["res://.godot/imported/Crush_Barrier_PastedImage220104-201001.png-7cba46f4218c5c0ff5498e04839cfed3.s3tc.ctex"]
+source_file="res://Assets/gltf/traffic/Road Blocks/Concrete/Chipped/Chipped_Road_Block_001_PastedImage220104-201001.png"
+dest_files=["res://.godot/imported/Chipped_Road_Block_001_PastedImage220104-201001.png-811a321ba426cb79f31e5c6bf14198a5.s3tc.ctex"]
 
 [params]
 
