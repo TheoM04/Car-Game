@@ -37,7 +37,15 @@ import_script/path=""
 materials/extract=0
 materials/extract_format=0
 materials/extract_path=""
-_subresources={}
+_subresources={
+"materials": {
+"Material #25.024": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://Assets/free-medieval-props-3d-low-poly-pack/material/Material #25.tres",
+"use_external/path": "uid://p0vd2wcog21n"
+}
+}
+}
 fbx/importer=0
 fbx/allow_geometry_helper_nodes=false
 fbx/embedded_image_handling=1

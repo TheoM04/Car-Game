@@ -18,8 +18,8 @@ var terrain_belt: Array[AnimatableBody3D] = []
 var num_of_blocks_to_spawn
 
 ## Path to directory holding the terrain block scenes
-@export_dir var terrian_blocks_path: Array[String] = ["res://Scenes/terrain_blocks"]
-@export var block_size: float = 17.277
+@export var terrian_blocks: Array[TerrainBlockData]
+var block_size: float
 
 var should_move = 1
 
@@ -31,11 +31,14 @@ var should_move = 1
 var enviroments = {}
 
 func _ready() -> void:
+	_load_terrain_scenes(terrian_blocks)
+	
 	num_of_blocks_to_spawn = ceil(render_distance / block_size)
 	print("\n\n---------------"+name+"---------------\n")
 	print("	render distance: %.2f\n	block size: %.2f\n	num_of_blocks_to_spawn: %.2f\n"%[render_distance,block_size,num_of_blocks_to_spawn])
-	_load_terrain_scenes(terrian_blocks_path)
+	
 	_init_blocks(num_of_blocks_to_spawn)
+	
 	should_move = 1
 	print("\n	enviroments:")
 	for key in enviroments:
@@ -44,14 +47,30 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	_progress_terrain(delta)
 
-func _load_terrain_scenes(target_paths: Array[String]) -> void:
-	for path in target_paths:
-		enviroments[path] = []
+func _load_terrain_scenes(target_blocks: Array[TerrainBlockData]) -> void:
+	for block in target_blocks:
+		block_size = block.block_size
+		var path: String = block.path
 		var dir = DirAccess.open(path)
-		for scene_path in dir.get_files():
-			print("	Loading terrian block scene: " + path + "/" + scene_path)
-			TerrainBlocks.append(load(path + "/" + scene_path))
-			enviroments[path].append(scene_path)
+		if not dir:
+			print("Error: Could not open directory: ", path)
+			continue
+		
+		enviroments[path] = []
+		for file_name in dir.get_files():
+			var scene_path: String = file_name
+			
+			# Handle remapped files in exported builds
+			if scene_path.ends_with(".remap"):
+				scene_path = scene_path.trim_suffix(".remap")
+			
+			# Only load valid scene extensions
+			if scene_path.ends_with(".scn") or scene_path.ends_with(".tscn"):
+				var full_path = path + "/" + scene_path
+				print("    Loading terrain block scene: ", full_path)
+				
+				TerrainBlocks.append(load(full_path))
+				enviroments[path].append(scene_path)
 
 func _init_blocks(number_of_blocks: int) -> void:
 	for block_index in number_of_blocks:
@@ -70,7 +89,7 @@ func _progress_terrain(delta: float) -> void:
 	for i in range(1, terrain_belt.size()):
 		terrain_belt[i].position.z = terrain_belt[i-1].position.z - block_size
 
-	if terrain_belt[0].position.z >= block_size:
+	if terrain_belt[0].position.z >= block_size*3/2:
 		var last_terrain = terrain_belt[-1]
 		var first_terrain = terrain_belt.pop_front()
 		
