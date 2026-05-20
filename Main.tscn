@@ -1,11 +1,13 @@
 [gd_scene format=3 uid="uid://dq0j8imbnan16"]
 
+[ext_resource type="Script" uid="uid://bu2dpeg0vkl1k" path="res://lifecycle.gd" id="1_lgr22"]
 [ext_resource type="Script" uid="uid://c301bkxn2gvjj" path="res://Scripts/FollowCamera.gd.gd" id="1_r0du0"]
-[ext_resource type="PackedScene" uid="uid://cbhkuopky11b4" path="res://Scenes/car.tscn" id="2_r0du0"]
+[ext_resource type="PackedScene" uid="uid://cbhkuopky11b4" path="res://Scenes/Car.tscn" id="2_r0du0"]
 [ext_resource type="Script" uid="uid://b7ff366dbhcth" path="res://Scripts/terrain_controller.gd" id="3_3dxm6"]
 [ext_resource type="PackedScene" uid="uid://dvk5mpyjgv5x7" path="res://Scenes/terrain_controller.tscn" id="3_r0du0"]
-[ext_resource type="Script" path="res://Scripts/music_player.gd" id="4_cm0pq"]
+[ext_resource type="Script" uid="uid://cb7lpvwtlsy2" path="res://Scripts/music_player.gd" id="4_cm0pq"]
 [ext_resource type="Script" uid="uid://w5stp5tixic3" path="res://Scripts/beat_dbg.gd" id="5_fos0i"]
+[ext_resource type="Script" uid="uid://dmdv1xdgpf84h" path="res://health_label.gd" id="8_trn2v"]
 
 [sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_7dm0k"]
 
@@ -21,7 +23,19 @@ glow_intensity = 0.15
 fog_enabled = true
 fog_light_color = Color(0.6720824, 0.47163177, 0.3010991, 1)
 
+[sub_resource type="LabelSettings" id="LabelSettings_03owx"]
+font_size = 30
+outline_size = 6
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_lgr22"]
+font_size = 42
+
+[sub_resource type="LabelSettings" id="LabelSettings_trn2v"]
+font_size = 62
+
 [node name="Main" type="Node3D" unique_id=1971039341]
+script = ExtResource("1_lgr22")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1617015305]
 environment = SubResource("Environment_0xm2m")
@@ -62,16 +76,51 @@ y_rotation = -89.49
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 15)
 block_size = 17.0
 
-[node name="Car" parent="." unique_id=1049898143 instance=ExtResource("2_r0du0")]
+[node name="Car" parent="." unique_id=1049898143 node_paths=PackedStringArray("lifecycle") instance=ExtResource("2_r0du0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10)
+lifecycle = NodePath("..")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1027624405]
+[node name="HUDLayer" type="CanvasLayer" parent="." unique_id=390582748]
 
-[node name="Label" type="Label" parent="CanvasLayer" unique_id=2136879638]
+[node name="BeatLabel" type="Label" parent="HUDLayer" unique_id=2136879638]
 offset_right = 155.0
 offset_bottom = 71.0
 theme_override_font_sizes/font_size = 40
 text = "Beat"
 script = ExtResource("5_fos0i")
 
-[connection signal="beat" from="MusicPlayer" to="CanvasLayer/Label" method="_on_music_player_beat"]
+[node name="HealthLabel" type="Label" parent="HUDLayer" unique_id=509275061]
+offset_left = 953.0
+offset_top = -4.0
+offset_right = 1144.0
+offset_bottom = 66.0
+text = "HEALTH"
+label_settings = SubResource("LabelSettings_03owx")
+horizontal_alignment = 2
+script = ExtResource("8_trn2v")
+
+[node name="TitleLayer" type="CanvasLayer" parent="." unique_id=1027624405]
+
+[node name="StartPrompt" type="Label" parent="TitleLayer" unique_id=1703103817]
+offset_top = 422.0
+offset_right = 1151.0
+offset_bottom = 650.0
+text = "Tap anywhere to start"
+label_settings = SubResource("LabelSettings_lgr22")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="GameOverLayer" type="CanvasLayer" parent="." unique_id=27914861]
+
+[node name="RestartPrompt" type="Label" parent="GameOverLayer" unique_id=1382452982]
+offset_top = 227.0
+offset_right = 1153.0
+offset_bottom = 402.0
+text = "Game over!
+Tap anywhere to restart"
+label_settings = SubResource("LabelSettings_trn2v")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="beat" from="MusicPlayer" to="HUDLayer/BeatLabel" method="_on_music_player_beat"]
+[connection signal="health_update" from="Car" to="HUDLayer/HealthLabel" method="_on_car_health_update"]

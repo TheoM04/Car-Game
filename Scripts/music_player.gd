@@ -30,8 +30,7 @@ func change_song(idx: int):
 	set_stream(current_song._stream)
 
 func _ready():
-	change_song(0)
-	play()
+	pass
 
 func _process(_delta):
 	# Use sound hardware clock for accurate timing

@@ -10,19 +10,27 @@ const OBSTACLE_HEAVY_CRASH_DISTANCE = 0.4
 const SCRAPE_DAMAGE = 25
 const STUCK_DAMAGE = 40
 
+signal health_update(health: float)
+
 var steering_input = 0.0
 var current_yaw = 0.0 
 var has_crashed := false
+var ignore_title_start = false
 
 # Health Variables
 @export var max_health: float = 100.0
-var current_health: float = max_health
+var current_health: float = max_health:
+	set(new_health):
+		health_update.emit(new_health)
+		current_health = new_health
 
 @export var turn_sensitivity = 2.0
 
 @onready var car_mesh: Node3D = $CarMesh
 @onready var left_smoke: GPUParticles3D = $LeftSmoke
 @onready var right_smoke: GPUParticles3D = $RightSmoke
+
+@export var lifecycle: Node
 
 # Logic for tracking the first pressed key for drifting
 var first_pressed_dir = 0.0
@@ -32,26 +40,25 @@ var scraping_obstacles: Array[Node3D] = []
 var damage_tick_timer = 0.0
 const TICK_RATE = 0.4 # Apply side damage every TICK_RATE seconds while stuck
 
+var touch_left = false
+var touch_right = false
+
 func _ready() -> void:
 	# Connect both entered and exited signals to manage getting stuck/unstuck
 	$CrashDetector.body_entered.connect(_on_crash_detector_body_entered)
 	$CrashDetector.body_exited.connect(_on_crash_detector_body_exited)
+	reset()
 
 func _physics_process(delta: float) -> void:
-	if has_crashed:
-		if Input.is_action_just_pressed("ui_select"):
-			get_tree().reload_current_scene()
-		return
-		
 	# Handle continuous damage if stuck against an obstacle
 	if not scraping_obstacles.is_empty():
 		damage_tick_timer += delta
 		if damage_tick_timer >= TICK_RATE:
 			damage_tick_timer = 0.0
-			_apply_damage(STUCK_DAMAGE, "⚡ STUCK! Continuous scraping damage...")
+			_apply_damage(STUCK_DAMAGE)
 
-	var left = Input.is_action_pressed("ui_left")
-	var right = Input.is_action_pressed("ui_right")
+	var left = touch_left || Input.is_action_pressed("ui_left")
+	var right = touch_right || Input.is_action_pressed("ui_right")
 	
 	if left and right:
 		if first_pressed_dir == 0.0:
@@ -61,7 +68,7 @@ func _physics_process(delta: float) -> void:
 		_apply_movement(delta, true)
 	else:
 		first_pressed_dir = 0.0
-		steering_input = Input.get_axis("ui_left", "ui_right")
+		steering_input = Input.get_axis("ui_left", "ui_right") - int(left) + int(right)
 		_apply_movement(delta, false)
 
 func _update_particles(is_drifting: bool) -> void:
@@ -89,7 +96,7 @@ func _apply_movement(delta: float, is_drifting: bool) -> void:
 	velocity.z = 0
 	velocity.y = 0
 	move_and_slide()
-
+	
 func _on_crash_detector_body_entered(body: Node3D) -> void:
 	if has_crashed: 
 		return
@@ -100,12 +107,12 @@ func _on_crash_detector_body_entered(body: Node3D) -> void:
 		
 		# 1. HUGE DAMAGE -> Instant Wreck
 		if distance_from_center < OBSTACLE_HEAVY_CRASH_DISTANCE:
-			_apply_damage(max_health, "💥 DIRECT HEAD-ON COLLISION!")
+			_apply_damage(max_health)
 		# 2. LIGHT DAMAGE -> Track for continuous scrape damage
 		else:
 			if not scraping_obstacles.has(body):
 				scraping_obstacles.append(body)
-			_apply_damage(SCRAPE_DAMAGE, "🚗 INITIAL CLIP! Side Scrape!")
+			_apply_damage(SCRAPE_DAMAGE)
 
 func _on_crash_detector_body_exited(body: Node3D) -> void:
 	# If we successfully steer away and clear the obstacle, remove it from our tracking
@@ -113,12 +120,29 @@ func _on_crash_detector_body_exited(body: Node3D) -> void:
 		scraping_obstacles.erase(body)
 		damage_tick_timer = 0.0 # Reset tick timer
 
-func _apply_damage(amount: float, message: String) -> void:
+func _apply_damage(amount: float) -> void:
 	current_health -= amount
-	print(message, "\nCurrent Health: ", current_health if current_health > 0 else 0, "/", max_health)
 	
 	if current_health <= 0:
 		trigger_game_over()
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event is InputEventScreenTouch:
+		var middle = get_viewport().get_visible_rect().size.x / 2
+
+		if event.position.x <= middle:
+			touch_left = event.is_pressed()
+		else:
+			touch_right = event.is_pressed()
+	elif event is InputEventScreenDrag and (touch_left or touch_right):
+		var middle = get_viewport().get_visible_rect().size.x / 2
+
+		if event.position.x <= middle:
+			touch_left = true
+			touch_right = false
+		else:
+			touch_left = false
+			touch_right = true
 
 func trigger_game_over() -> void:
 	if has_crashed: return
@@ -126,10 +150,14 @@ func trigger_game_over() -> void:
 	velocity = Vector3.ZERO
 	scraping_obstacles.clear()
 	_update_particles(false)
-	
-	var terrain_controllers = get_tree().get_nodes_in_group("terrain_controller")
-	for terrain in terrain_controllers:
-		terrain.should_move = 0
-		terrain.set_physics_process(false)
-	
-	print("💀 TOTALED! Game Over. Press Spacebar to Restart.")
+
+	if lifecycle != null:
+		lifecycle.game_over()
+		
+func reset():
+	self.position = Vector3.ZERO
+	self.rotation = Vector3.ZERO
+	self.velocity = Vector3.ZERO
+	current_yaw = 0
+	has_crashed = false
+	current_health = max_health
