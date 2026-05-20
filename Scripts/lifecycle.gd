@@ -36,7 +36,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		play()
 
 func title():
-	car.set_physics_process(false)
+	car.set_process_unhandled_input(false)
 
 	music_player.stop()
 
