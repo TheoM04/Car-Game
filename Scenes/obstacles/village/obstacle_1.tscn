@@ -1610,7 +1610,7 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_kg68p")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_fwgms"]
-size = Vector3(1.1402283, 1, 0.74261475)
+size = Vector3(1.1402283, 0.53222656, 0.74261475)
 
 [node name="StaticBody3D" type="StaticBody3D" unique_id=1441086694 groups=["obstacle"]]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
@@ -1621,12 +1621,12 @@ mesh = SubResource("ArrayMesh_8045t")
 metadata/asset_placer_res_id = "uid://dj4qvxapsw8k5"
 
 [node name="Prop_Hay_1_obj" type="MeshInstance3D" parent="." unique_id=604506356]
-transform = Transform3D(-0.32533917, 0, 0.227885, 0, 0.39721137, 0, -0.227885, 0, -0.32533917, -0.385, 0, 0.224)
+transform = Transform3D(-0.03784498, 0.3125633, -0.24217539, -0.3733499, 0.05186747, 0.12528652, 0.13021037, 0.23956382, 0.2888451, -0.4478628, 0.15110588, 0.11678022)
 mesh = SubResource("ArrayMesh_q0pcs")
 metadata/asset_placer_res_id = "uid://bjopwpb5pdq5s"
 
 [node name="Prop_Hay_1_obj2" type="MeshInstance3D" parent="." unique_id=977079495]
-transform = Transform3D(-0.35330078, 0, -0.18153718, 0, 0.39721137, 0, 0.18153718, 0, -0.35330078, 0.032, 0, 0.205)
+transform = Transform3D(-0.35330078, 0, -0.18153718, 0, 0.39721137, 0, 0.18153718, 0, -0.35330078, 0.28627926, 0, 0.205)
 mesh = SubResource("ArrayMesh_q0pcs")
 metadata/asset_placer_res_id = "uid://bjopwpb5pdq5s"
 
@@ -1635,8 +1635,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.41781932, 0, -0.272)
 mesh = SubResource("ArrayMesh_rohio")
 metadata/asset_placer_res_id = "uid://taa3iy1x5yft"
 
-[node name="Pot_01" type="Node3D" parent="." unique_id=1909241360 instance=ExtResource("1_2xbrg")]
-transform = Transform3D(0.8613367, -0.5037287, -0.06600411, 0.47521606, 0.7529279, 0.45526865, -0.17963554, -0.4235058, 0.8879044, 0.41553316, 0, 0.186)
+[node name="Pot_01" parent="." unique_id=1909241360 instance=ExtResource("1_2xbrg")]
+transform = Transform3D(0.8613367, -0.5037287, -0.06600411, 0.47521606, 0.7529279, 0.45526865, -0.17963554, -0.4235058, 0.8879044, -0.005040914, 0, 0.186)
 metadata/asset_placer_res_id = "uid://cehxlnpw76253"
 
 [node name="Pot_02" parent="." unique_id=1085797841 instance=ExtResource("1_2xbrg")]
@@ -1644,5 +1644,5 @@ transform = Transform3D(-0.09797773, -0.46892655, 0.87778616, 0.47521603, 0.7529
 metadata/asset_placer_res_id = "uid://cehxlnpw76253"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1788173209]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.11998069, 0, -0.09390855)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.11998069, 0.23388672, -0.09390855)
 shape = SubResource("BoxShape3D_fwgms")

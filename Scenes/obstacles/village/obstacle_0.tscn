@@ -1,3 +1,59 @@
 [gd_scene format=3 uid="uid://cknyhtt0ijxfu"]
 
-[node name="Obstacle0" type="Node3D" unique_id=1596522596]
+[ext_resource type="PackedScene" uid="uid://dy6y36ir2cg24" path="res://Assets/gltf/Rock_1_N_Color1.gltf" id="1_rohio"]
+[ext_resource type="PackedScene" uid="uid://dn1y5rklcwblh" path="res://Assets/gltf/Grass_2_C_Color1.gltf" id="2_fwgms"]
+[ext_resource type="PackedScene" uid="uid://dk6qhvbksrt5b" path="res://Assets/gltf/Grass_2_B_Singlesided_Color1.gltf" id="3_6y86l"]
+[ext_resource type="PackedScene" uid="uid://dtnxt8o16i1h7" path="res://Assets/gltf/Grass_2_A_Color1.gltf" id="4_jybiv"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ytrs7"]
+size = Vector3(2.0026321, 3.1616821, 1.2773438)
+
+[node name="StaticBody3D" type="StaticBody3D" unique_id=1415223504]
+
+[node name="Rock_1_N_Color12" type="Node3D" parent="." unique_id=158400049 instance=ExtResource("1_rohio")]
+transform = Transform3D(0.80148995, 0, 0.5980083, 0, 0.7039707, 0, -0.5980083, 0, 0.80148995, 0, 0, 0)
+metadata/asset_placer_res_id = "uid://dy6y36ir2cg24"
+
+[node name="Grass_2_C_Color12" type="Node3D" parent="." unique_id=2004615310 instance=ExtResource("2_fwgms")]
+transform = Transform3D(0.46279964, 0, 0.8864629, 0, 1, 0, -0.8864629, 0, 0.46279964, -0.41073358, 0, 0.923892)
+metadata/asset_placer_res_id = "uid://dn1y5rklcwblh"
+
+[node name="Grass_2_B_Singlesided_Color12" type="Node3D" parent="." unique_id=722106387 instance=ExtResource("3_6y86l")]
+transform = Transform3D(0.45390937, 0, -0.89104825, 0, 1, 0, 0.89104825, 0, 0.45390937, -0.7982893, 0, 0.6865616)
+metadata/asset_placer_res_id = "uid://dk6qhvbksrt5b"
+
+[node name="Grass_2_B_Singlesided_Color12 (1)" type="Node3D" parent="." unique_id=1858976854 instance=ExtResource("3_6y86l")]
+transform = Transform3D(0.45390937, 0, -0.89104825, 0, 1, 0, 0.89104825, 0, 0.45390937, 0.014939547, 0, 0.8835697)
+metadata/asset_placer_res_id = "uid://dk6qhvbksrt5b"
+
+[node name="Grass_2_A_Color12" type="Node3D" parent="." unique_id=973927793 instance=ExtResource("4_jybiv")]
+transform = Transform3D(0.50000036, 0, -0.8660256, 0, 1, 0, 0.8660256, 0, 0.50000036, -1.3149662, 2.3841858e-07, -0.009972334)
+metadata/asset_placer_res_id = "uid://dtnxt8o16i1h7"
+
+[node name="Grass_2_A_Color12 (1)" type="Node3D" parent="." unique_id=1643335382 instance=ExtResource("4_jybiv")]
+transform = Transform3D(0.766045, 0, -0.6427878, 0, 1, 0, 0.6427878, 0, 0.766045, -1.3110595, 0, 0.2938571)
+metadata/asset_placer_res_id = "uid://dtnxt8o16i1h7"
+
+[node name="Grass_2_A_Color12 (2)" type="Node3D" parent="." unique_id=1450217446 instance=ExtResource("4_jybiv")]
+transform = Transform3D(0.9396935, 0, -0.34202027, 0, 1, 0, 0.34202027, 0, 0.9396935, -1.1522111, 0, 0.5382495)
+metadata/asset_placer_res_id = "uid://dtnxt8o16i1h7"
+
+[node name="Grass_2_A_Color12 (3)" type="Node3D" parent="." unique_id=656955843 instance=ExtResource("4_jybiv")]
+transform = Transform3D(0.98480874, 0, -0.17364816, 0, 1, 0, 0.17364816, 0, 0.98480874, -0.9913693, 0, 0.6022377)
+metadata/asset_placer_res_id = "uid://dtnxt8o16i1h7"
+
+[node name="Grass_2_A_Color12 (5)" type="Node3D" parent="." unique_id=1162539671 instance=ExtResource("4_jybiv")]
+transform = Transform3D(0.7660455, 0, 0.6427886, 0, 1, 0, -0.6427886, 0, 0.7660455, 0.9815109, 0.035765767, 0.07241869)
+metadata/asset_placer_res_id = "uid://dtnxt8o16i1h7"
+
+[node name="Grass_2_A_Color12 (6)" type="Node3D" parent="." unique_id=286277239 instance=ExtResource("4_jybiv")]
+transform = Transform3D(0.3420207, 0, 0.93969405, 0, 1, 0, -0.93969405, 0, 0.3420207, 0.84009576, 0.035765767, 0.3472526)
+metadata/asset_placer_res_id = "uid://dtnxt8o16i1h7"
+
+[node name="Grass_2_A_Color12 (7)" type="Node3D" parent="." unique_id=431340896 instance=ExtResource("4_jybiv")]
+transform = Transform3D(0.9396943, 0, 0.34202093, 0, 1, 0, -0.34202093, 0, 0.9396943, 0.8047302, 0.035765767, 0.5714873)
+metadata/asset_placer_res_id = "uid://dtnxt8o16i1h7"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=857487258]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25706863, 1.5930481, 0.13867188)
+shape = SubResource("BoxShape3D_ytrs7")
