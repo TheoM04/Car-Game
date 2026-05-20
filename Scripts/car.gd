@@ -68,7 +68,7 @@ func _physics_process(delta: float) -> void:
 		_apply_movement(delta, true)
 	else:
 		first_pressed_dir = 0.0
-		steering_input = Input.get_axis("ui_left", "ui_right") - int(left) + int(right)
+		steering_input = Input.get_axis("ui_left", "ui_right") - int(touch_left) + int(touch_right)
 		_apply_movement(delta, false)
 
 func _update_particles(is_drifting: bool) -> void:
@@ -150,10 +150,14 @@ func trigger_game_over() -> void:
 	velocity = Vector3.ZERO
 	scraping_obstacles.clear()
 	_update_particles(false)
+	
+	touch_left = false
+	touch_right = false
+	set_physics_process(false)
 
 	if lifecycle != null:
 		lifecycle.game_over()
-		
+
 func reset():
 	self.position = Vector3.ZERO
 	self.rotation = Vector3.ZERO
@@ -161,3 +165,4 @@ func reset():
 	current_yaw = 0
 	has_crashed = false
 	current_health = max_health
+	set_physics_process(true)
