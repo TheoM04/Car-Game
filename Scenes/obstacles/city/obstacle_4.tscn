@@ -9,7 +9,8 @@ size = Vector3(0.25976563, 0.3355713, 0.29386902)
 [sub_resource type="BoxShape3D" id="BoxShape3D_bptfj"]
 size = Vector3(0.7158203, 0.42138672, 1.7716064)
 
-[node name="Obstacle1" type="StaticBody3D" unique_id=168672363 groups=["obstacle"]]
+[node name="Obstacle4" type="AnimatableBody3D" unique_id=1060872587 groups=["obstacle"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.031277776, 0)
 
 [node name="car_stationwagon2" parent="." unique_id=942726001 instance=ExtResource("1_kw2e3")]
 transform = Transform3D(-1.9999998, 0, -1.7484554e-07, 0, 2, 0, 1.7484554e-07, 0, -1.9999998, -0.04985988, 0.10861325, -0.9869592)

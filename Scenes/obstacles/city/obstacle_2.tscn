@@ -6,7 +6,8 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_x8nsr"]
 size = Vector3(1.875351, 0.50783694, 1.7647095)
 
-[node name="Obstacle1" type="StaticBody3D" unique_id=168672363 groups=["obstacle"]]
+[node name="Obstacle2" type="AnimatableBody3D" unique_id=955448129 groups=["obstacle"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.048291564, 0)
 
 [node name="car_hatchback2" parent="." unique_id=198184614 instance=ExtResource("1_qrbrw")]
 transform = Transform3D(-8.742278e-08, 0, 2, 0, 2, 0, -2, 0, -8.742278e-08, -0.13853508, 0.106725335, -0.4392815)

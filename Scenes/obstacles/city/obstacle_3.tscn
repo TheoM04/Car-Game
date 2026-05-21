@@ -5,11 +5,12 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_x8nsr"]
 size = Vector3(0.122882366, 1.6840942, 0.12774849)
 
-[node name="Obstacle1" type="StaticBody3D" unique_id=168672363 groups=["obstacle"]]
+[node name="Obstacle3" type="AnimatableBody3D" unique_id=1120683809 groups=["obstacle"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.059598327, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1490398746]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0030109882, 0.7805237, 0.00049877167)
 shape = SubResource("BoxShape3D_x8nsr")
 
 [node name="trafficlight_B2" parent="." unique_id=543727794 instance=ExtResource("1_uugra")]
-transform = Transform3D(2.25, 0, 0, 0, 2.25, 0, 0, 0, 2.25, 0, 0, 0)
+transform = Transform3D(2.25, 0, 0, 0, 2.25, 0, 0, 0, 2.25, 0, -0.059598327, 0)

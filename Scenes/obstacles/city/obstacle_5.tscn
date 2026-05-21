@@ -5,7 +5,8 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_2k1bd"]
 size = Vector3(11.329102, 7.0117188, 0.70318604)
 
-[node name="Obstacle1" type="StaticBody3D" unique_id=168672363 groups=["obstacle"]]
+[node name="Obstacle5" type="AnimatableBody3D" unique_id=1781735892 groups=["obstacle"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.037558973, 0)
 
 [node name="Wood_Road_Block_Medium" parent="." unique_id=2064354118 groups=["obstacle"] instance=ExtResource("1_2k1bd")]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)

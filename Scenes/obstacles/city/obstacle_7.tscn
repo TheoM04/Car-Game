@@ -16,7 +16,8 @@ size = Vector3(0.23153305, 0.4942627, 0.20937347)
 [sub_resource type="BoxShape3D" id="BoxShape3D_fjm6b"]
 size = Vector3(0.23153305, 0.4942627, 0.20937347)
 
-[node name="Obstacle" type="StaticBody3D" unique_id=168672363 groups=["obstacle"]]
+[node name="Obstacle7" type="AnimatableBody3D" unique_id=717902992 groups=["obstacle"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.023145437, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=42022298]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.4962101, 0.17980957, 0.009311676)

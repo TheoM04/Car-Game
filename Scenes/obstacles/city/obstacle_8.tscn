@@ -9,14 +9,15 @@ size = Vector3(1.2734375, 1.503479, 1.3383179)
 [sub_resource type="BoxShape3D" id="BoxShape3D_4051c"]
 size = Vector3(0.7220154, 0.4179077, 1.7546387)
 
-[node name="Obstacle1" type="StaticBody3D" unique_id=168672363 groups=["obstacle"]]
+[node name="Obstacle8" type="AnimatableBody3D" unique_id=803053019 groups=["obstacle"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.009200513, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=691556440]
 transform = Transform3D(-0.016240077, -0.14644448, 0.13524154, 0.17386596, -0.07677613, -0.062257834, 0.0975032, 0.11251415, 0.13354282, -0.85356015, 0.18384373, 1.483663)
 shape = SubResource("BoxShape3D_c20ye")
 
 [node name="Broken_Traffic_Cone_005" parent="." unique_id=568152899 instance=ExtResource("2_c20ye")]
-transform = Transform3D(-0.016240077, -0.14644448, 0.13524154, 0.17386596, -0.07677613, -0.062257834, 0.0975032, 0.11251415, 0.13354282, -0.744, 0.22972748, 1.3932502)
+transform = Transform3D(-0.024520893, -0.14261271, 0.13805921, 0.17289259, -0.083679006, -0.055731237, 0.097503215, 0.11251417, 0.13354284, -0.744, 0.22972748, 1.3932502)
 
 [node name="car_taxi2" parent="." unique_id=505832184 instance=ExtResource("2_4051c")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.11256009, 0)

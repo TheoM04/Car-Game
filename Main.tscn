@@ -2,11 +2,11 @@
 
 [ext_resource type="Script" uid="uid://bu2dpeg0vkl1k" path="res://Scripts/lifecycle.gd" id="1_lgr22"]
 [ext_resource type="Script" uid="uid://c301bkxn2gvjj" path="res://Scripts/FollowCamera.gd.gd" id="1_r0du0"]
-[ext_resource type="PackedScene" uid="uid://cbhkuopky11b4" path="res://Scenes/car.tscn" id="2_r0du0"]
+[ext_resource type="PackedScene" uid="uid://cbhkuopky11b4" path="res://Scenes/Car.tscn" id="2_r0du0"]
 [ext_resource type="Script" uid="uid://b7ff366dbhcth" path="res://Scripts/terrain_controller.gd" id="3_3dxm6"]
 [ext_resource type="PackedScene" uid="uid://dvk5mpyjgv5x7" path="res://Scenes/terrain_controller.tscn" id="3_r0du0"]
 [ext_resource type="Script" uid="uid://cb7lpvwtlsy2" path="res://Scripts/music_player.gd" id="4_cm0pq"]
-[ext_resource type="Script" uid="uid://bws2t2a6avveq" path="res://Scripts/terrain_block_data.gd" id="4_lgr22"]
+[ext_resource type="Script" path="res://Scripts/terrain_block_data.gd" id="4_lgr22"]
 [ext_resource type="Script" uid="uid://w5stp5tixic3" path="res://Scripts/beat_dbg.gd" id="5_fos0i"]
 [ext_resource type="Script" uid="uid://dmdv1xdgpf84h" path="res://Scripts/health_label.gd" id="8_trn2v"]
 
@@ -37,15 +37,13 @@ metadata/_custom_type_script = "uid://bws2t2a6avveq"
 
 [sub_resource type="Resource" id="Resource_wkp8b"]
 script = ExtResource("4_lgr22")
-path = "res://Scenes/terrain_blocks/Village/cobblestone_road"
-block_size = 17.0
-metadata/_custom_type_script = "uid://bws2t2a6avveq"
-
-[sub_resource type="Resource" id="Resource_lgr22"]
-script = ExtResource("4_lgr22")
 path = "res://Scenes/terrain_blocks/City/city_road"
-block_size = 15.0
-metadata/_custom_type_script = "uid://bws2t2a6avveq"
+block_size = 17.0
+
+[sub_resource type="Resource" id="Resource_20pc6"]
+script = ExtResource("4_lgr22")
+path = "res://Scenes/obstacles/city"
+block_size = 2.55
 
 [sub_resource type="LabelSettings" id="LabelSettings_03owx"]
 font_size = 30
@@ -82,21 +80,30 @@ shadow_opacity = 0.75
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 15)
 script = ExtResource("3_3dxm6")
 terrian_blocks = Array[ExtResource("4_lgr22")]([SubResource("Resource_trn2v")])
-x_offset = -7.62
-y_offset = 0.45
-y_rotation = 89.525
+x_offsets = Array[float]([-7.62])
+y_offsets = Array[float]([0.45])
+y_rotations = Array[float]([89.525])
 
 [node name="RightDecorationController" type="Node3D" parent="." unique_id=346248319 groups=["terrain_controller"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 15)
 script = ExtResource("3_3dxm6")
 terrian_blocks = Array[ExtResource("4_lgr22")]([SubResource("Resource_03owx")])
-x_offset = 8.79
-y_offset = 0.24
-y_rotation = -89.49
+x_offsets = Array[float]([8.79])
+y_offsets = Array[float]([0.24])
+y_rotations = Array[float]([-89.49])
 
 [node name="RoadController" parent="." unique_id=563873316 instance=ExtResource("3_r0du0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 15)
-terrian_blocks = Array[ExtResource("4_lgr22")]([SubResource("Resource_wkp8b"), SubResource("Resource_lgr22")])
+terrian_blocks = Array[ExtResource("4_lgr22")]([SubResource("Resource_wkp8b")])
+
+[node name="ObstaclePlacer" type="Node3D" parent="." unique_id=775446239 groups=["terrain_controller"]]
+script = ExtResource("3_3dxm6")
+render_distance = 40
+terrian_blocks = Array[ExtResource("4_lgr22")]([SubResource("Resource_20pc6")])
+should_generate = false
+x_offsets = Array[float]([0.0, -3.0, 3.0, 4.0, -4.0, 1.5, -1.5])
+y_offsets = Array[float]([0.5])
+y_rotations = Array[float]([0.0, 90.0, -90.0, 45.0, -45.0])
 
 [node name="Car" parent="." unique_id=1049898143 node_paths=PackedStringArray("lifecycle") instance=ExtResource("2_r0du0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10)
@@ -112,10 +119,12 @@ text = "Beat"
 script = ExtResource("5_fos0i")
 
 [node name="HealthLabel" type="Label" parent="HUDLayer" unique_id=509275061]
-offset_left = 953.0
-offset_top = -4.0
-offset_right = 1144.0
-offset_bottom = 66.0
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -182.0
+offset_bottom = 48.0
+grow_horizontal = 0
 text = "HEALTH"
 label_settings = SubResource("LabelSettings_03owx")
 horizontal_alignment = 2
@@ -124,9 +133,17 @@ script = ExtResource("8_trn2v")
 [node name="TitleLayer" type="CanvasLayer" parent="." unique_id=1027624405]
 
 [node name="StartPrompt" type="Label" parent="TitleLayer" unique_id=1703103817]
-offset_top = 422.0
-offset_right = 1151.0
-offset_bottom = 650.0
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -223.0
+offset_top = -163.0
+offset_right = 223.0
+offset_bottom = -105.0
+grow_horizontal = 2
+grow_vertical = 0
 text = "Tap anywhere to start"
 label_settings = SubResource("LabelSettings_lgr22")
 horizontal_alignment = 1
@@ -135,9 +152,17 @@ vertical_alignment = 1
 [node name="GameOverLayer" type="CanvasLayer" parent="." unique_id=27914861]
 
 [node name="RestartPrompt" type="Label" parent="GameOverLayer" unique_id=1382452982]
-offset_top = 227.0
-offset_right = 1153.0
-offset_bottom = 402.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -361.0
+offset_top = -87.5
+offset_right = 361.0
+offset_bottom = 87.5
+grow_horizontal = 2
+grow_vertical = 2
 text = "Game over!
 Tap anywhere to restart"
 label_settings = SubResource("LabelSettings_trn2v")

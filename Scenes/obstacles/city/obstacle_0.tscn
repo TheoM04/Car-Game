@@ -5,7 +5,8 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_wt3t2"]
 size = Vector3(1, 0.4, 1)
 
-[node name="Obstacle0" type="StaticBody3D" unique_id=689983455 groups=["obstacle"]]
+[node name="Obstacle0" type="AnimatableBody3D" unique_id=397248523 groups=["obstacle"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05410111, 0)
 
 [node name="dumpster2" parent="." unique_id=1481925946 instance=ExtResource("1_yquvf")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -0.049, 0)

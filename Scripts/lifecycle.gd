@@ -10,6 +10,8 @@ var state
 @onready var gameover_layer: CanvasLayer = get_node("GameOverLayer")
 @onready var car: Node3D = get_node("Car")
 
+@onready var obstacle_placer: Node3D = get_node("ObstaclePlacer")
+
 var terrain_controllers: Array[Node]
 
 # Called when the node enters the scene tree for the first time.
@@ -39,6 +41,10 @@ func title():
 	car.set_process_unhandled_input(false)
 
 	music_player.stop()
+	
+	obstacle_placer.should_move = false
+	obstacle_placer.should_generate = false
+	obstacle_placer.set_physics_process(false)
 
 	title_layer.visible = true
 	hud_layer.visible = false
@@ -48,9 +54,12 @@ func title():
 
 func play():
 	for terrain in terrain_controllers:
-		terrain.should_move = 1
+		terrain.should_move = true
 		terrain.set_physics_process(true)
 
+	obstacle_placer.clear()
+	obstacle_placer.should_generate = true
+	
 	title_layer.visible = false
 	hud_layer.visible = true
 	gameover_layer.visible = false
@@ -66,7 +75,7 @@ func game_over():
 	car.set_process_unhandled_input(false)
 
 	for terrain in terrain_controllers:
-		terrain.should_move = 0
+		terrain.should_move = false
 		terrain.set_physics_process(false)
 
 	hud_layer.visible = false

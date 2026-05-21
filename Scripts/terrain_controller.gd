@@ -21,11 +21,14 @@ var num_of_blocks_to_spawn
 @export var terrian_blocks: Array[TerrainBlockData]
 var block_size: float
 
-var should_move = 1
+var should_move = true
+@export var should_generate = true
 
-@export var x_offset: float = 0
-@export var y_offset: float = 0
-@export var y_rotation: float = 0
+@export var x_offsets: Array[float] = [0]
+@export var y_offsets: Array[float] = [0]
+@export var y_rotations: Array[float] = [0]
+
+@export var place_chance: float = 1
 
 #Enviroments
 var enviroments = {}
@@ -38,8 +41,7 @@ func _ready() -> void:
 	print("	render distance: %.2f\n	block size: %.2f\n	num_of_blocks_to_spawn: %.2f\n"%[render_distance,block_size,num_of_blocks_to_spawn])
 	
 	_init_blocks(num_of_blocks_to_spawn)
-	
-	should_move = 1
+
 	print("\n	enviroments:")
 	for key in enviroments:
 		print("		",key.split("/")[-1] + ": ", len(enviroments[key]))
@@ -72,9 +74,15 @@ func _load_terrain_scenes(target_blocks: Array[TerrainBlockData]) -> void:
 				TerrainBlocks.append(load(full_path))
 				enviroments[path].append(scene_path)
 
+func _pick_block():
+	if should_generate and randf() < place_chance:
+		return TerrainBlocks.pick_random().instantiate()
+	else:
+		return AnimatableBody3D.new()
+
 func _init_blocks(number_of_blocks: int) -> void:
 	for block_index in number_of_blocks:
-		var block = TerrainBlocks.pick_random().instantiate()
+		var block = _pick_block()
 		if block_index == 0:
 			block.position.z = block_size/2
 		else:
@@ -84,16 +92,14 @@ func _init_blocks(number_of_blocks: int) -> void:
 
 
 func _progress_terrain(delta: float) -> void:
-	terrain_belt[0].position.z += terrain_velocity  * should_move * delta
-	
-	for i in range(1, terrain_belt.size()):
-		terrain_belt[i].position.z = terrain_belt[i-1].position.z - block_size
+	for block in terrain_belt:
+		block.position.z += terrain_velocity * int(should_move) * delta
 
 	if terrain_belt[0].position.z >= block_size*3/2:
 		var last_terrain = terrain_belt[-1]
 		var first_terrain = terrain_belt.pop_front()
-		
-		var block = TerrainBlocks.pick_random().instantiate()
+	
+		var block = _pick_block()
 		_append_to_far_edge(last_terrain, block)
 		add_child(block)
 		terrain_belt.append(block)
@@ -102,6 +108,14 @@ func _progress_terrain(delta: float) -> void:
 
 func _append_to_far_edge(target_block: AnimatableBody3D, appending_block: AnimatableBody3D) -> void:
 	appending_block.position.z = target_block.position.z - block_size
-	appending_block.position.x = x_offset
-	appending_block.position.y = y_offset
-	appending_block.rotation.y = y_rotation
+	appending_block.position.x = x_offsets.pick_random()
+	appending_block.position.y = y_offsets.pick_random()
+	appending_block.rotation.y = y_rotations.pick_random()
+
+func clear():
+	for block in terrain_belt:
+		block.free()
+	terrain_belt.clear()
+	
+	should_generate = false
+	_init_blocks(num_of_blocks_to_spawn)
