@@ -1,9 +1,0 @@
-[gd_scene format=3 uid="uid://crm46fvl8r88c"]
-
-[ext_resource type="ArrayMesh" uid="uid://m3flg4wqceim" path="res://Assets/voxel_desert_town/Small Building 04/Package/SmallBuilding04.obj" id="1_kua56"]
-
-[node name="SmallBuilding04" type="Node3D" unique_id=335064749]
-
-[node name="SmallBuilding04" type="MeshInstance3D" parent="." unique_id=79715720]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 0, 0)
-mesh = ExtResource("1_kua56")

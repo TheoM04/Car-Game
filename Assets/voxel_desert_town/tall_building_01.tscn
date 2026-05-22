@@ -1,9 +1,0 @@
-[gd_scene format=3 uid="uid://itabg4y0gxid"]
-
-[ext_resource type="ArrayMesh" uid="uid://bvus26nrx6hb0" path="res://Assets/voxel_desert_town/Tall Building 01/Package/TallBuilding01.obj" id="1_45q68"]
-
-[node name="TallBuilding01" type="Node3D" unique_id=1767511550]
-
-[node name="TallBuilding01" type="MeshInstance3D" parent="." unique_id=630798724]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, 0)
-mesh = ExtResource("1_45q68")

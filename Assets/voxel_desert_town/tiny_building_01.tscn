@@ -1,8 +1,0 @@
-[gd_scene format=3 uid="uid://bxcmlcnraexuw"]
-
-[ext_resource type="ArrayMesh" uid="uid://dddntxm8cfa7x" path="res://Assets/voxel_desert_town/Tiny Building/Package/TinyBuilding01.obj" id="1_qracx"]
-
-[node name="TinyBuilding01" type="Node3D" unique_id=623773043]
-
-[node name="TinyBuilding01" type="MeshInstance3D" parent="." unique_id=2015269692]
-mesh = ExtResource("1_qracx")
