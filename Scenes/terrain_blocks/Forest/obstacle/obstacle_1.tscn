@@ -8,6 +8,9 @@ size = Vector3(0.08758545, 0.19824219, 1.1421814)
 [sub_resource type="BoxShape3D" id="BoxShape3D_lb0hn"]
 size = Vector3(1.1659851, 1.1691895, 1.4363747)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_glt5f"]
+size = Vector3(1.0478516, 0.5107422, 1.6777344)
+
 [node name="Obstacle1" type="AnimatableBody3D" unique_id=1484113393 groups=["obstacle"]]
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="." unique_id=1309166458]
@@ -20,3 +23,11 @@ shape = SubResource("BoxShape3D_lb0hn")
 
 [node name="Tree_2_A_Color12" parent="." unique_id=1514798024 instance=ExtResource("1_rlr6w")]
 transform = Transform3D(0.68, 0, 0, 0, 0.16423048, -0.65986997, 0, 0.65986997, 0.16423048, 0.07406843, 0.09446323, -0.9965973)
+
+[node name="Area3D" type="Area3D" parent="." unique_id=881410088 groups=["near_trigger"]]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0.05999756, 0.6371381, 0.022735596)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=440219281]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.021209717, 0.0043945313, 0.2097168)
+shape = SubResource("BoxShape3D_glt5f")
+debug_color = Color(0.26299343, 0.63440275, 3.85046e-07, 0.41960785)

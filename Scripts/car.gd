@@ -11,11 +11,14 @@ const SCRAPE_DAMAGE = 25
 const STUCK_DAMAGE = 40
 
 signal health_update(health: float)
+signal close_call
 
 var steering_input = 0.0
 var current_yaw = 0.0 
 var has_crashed := false
 var ignore_title_start = false
+
+var near = false
 
 # Health Variables
 @export var max_health: float = 100.0
@@ -29,6 +32,8 @@ var current_health: float = max_health:
 @onready var car_mesh: Node3D = $CarMesh
 @onready var left_smoke: GPUParticles3D = $LeftSmoke
 @onready var right_smoke: GPUParticles3D = $RightSmoke
+
+@onready var close_call_timer: Timer = $CloseCallTimer
 
 @export var lifecycle: Node
 
@@ -47,6 +52,9 @@ func _ready() -> void:
 	# Connect both entered and exited signals to manage getting stuck/unstuck
 	$CrashDetector.body_entered.connect(_on_crash_detector_body_entered)
 	$CrashDetector.body_exited.connect(_on_crash_detector_body_exited)
+	
+	$NearDetector.area_entered.connect(_on_near_detector_area_entered)
+	$NearDetector.area_exited.connect(_on_near_detector_area_exited)
 	reset()
 
 func _physics_process(delta: float) -> void:
@@ -82,10 +90,12 @@ func _apply_movement(delta: float, is_drifting: bool) -> void:
 	
 	var rotation_factor = DRIFT_STEERING_SENSITIVITY if is_drifting else BASE_STEERING_SENSITIVITY
 	current_yaw -= steering_input * (turn_sensitivity * rotation_factor) * delta
+	current_yaw = clampf(current_yaw, -0.7, 0.7)
 	rotation.y = current_yaw
 	
-	var forward_vector = -transform.basis.z 
-	velocity.x = forward_vector.x * current_speed
+	#var forward_vector = -transform.basis.z 
+	#velocity.x = forward_vector.x * current_speed
+	velocity.x = -current_yaw * current_speed * 1.46
 	
 	# Visual tilt
 	var target_tilt = -steering_input * 0.1
@@ -96,12 +106,14 @@ func _apply_movement(delta: float, is_drifting: bool) -> void:
 	velocity.z = 0
 	velocity.y = 0
 	move_and_slide()
-	
+
 func _on_crash_detector_body_entered(body: Node3D) -> void:
 	if has_crashed: 
 		return
-		
+
 	if body.is_in_group("obstacle"):
+		close_call_timer.stop()
+
 		var local_pos = global_transform.inverse() * body.global_position
 		var distance_from_center = abs(local_pos.x)
 		
@@ -119,6 +131,14 @@ func _on_crash_detector_body_exited(body: Node3D) -> void:
 	if scraping_obstacles.has(body):
 		scraping_obstacles.erase(body)
 		damage_tick_timer = 0.0 # Reset tick timer
+		
+func _on_near_detector_area_entered(area: Area3D) -> void:
+	if area.is_in_group("near_trigger"):
+		near = true
+
+func _on_near_detector_area_exited(area: Area3D) -> void:
+	if area.is_in_group("near_trigger"):
+		near = false
 
 func _apply_damage(amount: float) -> void:
 	current_health -= amount
@@ -166,3 +186,7 @@ func reset():
 	has_crashed = false
 	current_health = max_health
 	set_physics_process(true)
+
+
+func _on_close_call_timer_timeout() -> void:
+	close_call.emit()

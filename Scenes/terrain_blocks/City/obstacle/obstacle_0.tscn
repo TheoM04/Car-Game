@@ -3,7 +3,10 @@
 [ext_resource type="PackedScene" uid="uid://2mni7734fs3d" path="res://Assets/gltf/dumpster.gltf" id="1_yquvf"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wt3t2"]
-size = Vector3(1, 0.4, 1)
+size = Vector3(1, 0.46401367, 0.5830078)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2844v"]
+size = Vector3(1.314209, 0.5107422, 1.0627441)
 
 [node name="Obstacle0" type="AnimatableBody3D" unique_id=397248523 groups=["obstacle"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05410111, 0)
@@ -12,5 +15,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05410111, 0)
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -0.049, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=600264160]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.259, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.22699314, 0)
 shape = SubResource("BoxShape3D_wt3t2")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=215221931 groups=["near_trigger"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.20836523, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1030750672]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0043945313, 0)
+shape = SubResource("BoxShape3D_2844v")
+debug_color = Color(0.26299343, 0.63440275, 3.85046e-07, 0.41960785)

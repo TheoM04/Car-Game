@@ -3,14 +3,35 @@
 [ext_resource type="PackedScene" uid="uid://5mqevusfqy1" path="res://Assets/gltf/trafficlight_B.gltf" id="1_uugra"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_x8nsr"]
-size = Vector3(0.122882366, 1.6840942, 0.12774849)
+size = Vector3(0.04988563, 0.88855284, 0.12774849)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jd57a"]
+size = Vector3(1.014679, 0.32080078, 0.69021606)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_71rx5"]
+size = Vector3(0.73736954, 0.28125, 2.515232)
 
 [node name="Obstacle3" type="AnimatableBody3D" unique_id=1120683809 groups=["obstacle"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.059598327, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1490398746]
-transform = Transform3D(1, 0, 0, 0, 0.023926184, 0.9997138, 0, -0.9997138, 0.023926184, -0.0030109882, 0.038951144, 0.22743502)
+transform = Transform3D(2.86, 0, 0, 0, 0.06842892, 2.8591812, 0, -2.8591812, 0.06842892, -0.014067117, 0.11856189, -0.30430302)
 shape = SubResource("BoxShape3D_x8nsr")
 
 [node name="trafficlight_B2" parent="." unique_id=543727794 instance=ExtResource("1_uugra")]
-transform = Transform3D(2.25, 0, 0, 0, 0.053833917, 2.249356, 0, -2.249356, 0.053833917, 0, 0.01835163, 1.0673046)
+transform = Transform3D(2.86, 0, 0, 0, 0.06842892, 2.8591812, 0, -2.8591812, 0.06842892, 0, 0.085236266, 1.0673046)
+
+[node name="Area3D" type="Area3D" parent="." unique_id=1089041424 groups=["near_trigger"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.27524987, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=29527970]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.37104797, -0.09057617, -1.5428009)
+shape = SubResource("BoxShape3D_jd57a")
+debug_color = Color(0.26299343, 0.63440275, 3.85046e-07, 0.41960785)
+
+[node name="Area3D2" type="Area3D" parent="." unique_id=1296162594 groups=["near_trigger"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.27524987, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D2" unique_id=713694646]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.06919289, -0.11035156, -0.19030058)
+shape = SubResource("BoxShape3D_71rx5")
+debug_color = Color(0.26299343, 0.63440275, 3.85046e-07, 0.41960785)

@@ -3,7 +3,10 @@
 [ext_resource type="PackedScene" uid="uid://njc45iqotm8s" path="res://Assets/gltf/Rock_3_N_Color1.gltf" id="1_xgta0"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_lb0hn"]
-size = Vector3(0.3427601, 0.3998413, 0.2813573)
+size = Vector3(0.2626953, 0.3998413, 0.22851563)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xgta0"]
+size = Vector3(1.1845703, 0.5107422, 1.0556641)
 
 [node name="Obstacle3" type="AnimatableBody3D" unique_id=1484113393 groups=["obstacle"]]
 transform = Transform3D(1.96, 0, 0, 0, 1.96, 0, 0, 0, 1.96, 0, 0, 0)
@@ -14,3 +17,11 @@ shape = SubResource("BoxShape3D_lb0hn")
 
 [node name="Rock_3_N_Color12" parent="." unique_id=200232489 instance=ExtResource("1_xgta0")]
 transform = Transform3D(0.265, 0, 0, 0, 0.265, 0, 0, 0, 0.265, 0, 0.40121785, 0)
+
+[node name="Area3D" type="Area3D" parent="." unique_id=146127979 groups=["near_trigger"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.20836523, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1809076563]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0043945313, -0.025146484)
+shape = SubResource("BoxShape3D_xgta0")
+debug_color = Color(0.26299343, 0.63440275, 3.85046e-07, 0.41960785)

@@ -89,14 +89,7 @@ func _progress_terrain(delta: float) -> void:
 	if terrain_belt.is_empty():
 		return
 	elif terrain_belt[0].position.z >= block_size*3/2:
-		var last_terrain = terrain_belt[-1]
-		var first_terrain = terrain_belt.pop_front()
-	
-		var block = _pick_block()
-		_append_to_far_edge(last_terrain, block)
-		add_child(block)
-		terrain_belt.append(block)
-		first_terrain.queue_free()
+		terrain_belt.pop_front().queue_free()
 
 
 func _append_to_far_edge(target_block: AnimatableBody3D, appending_block: AnimatableBody3D) -> void:

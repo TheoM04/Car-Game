@@ -6,7 +6,10 @@
 size = Vector3(0.016399022, 0.020636559, 0.43322957)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hoers"]
-size = Vector3(0.047978833, 0.028082848, 0.060120635)
+size = Vector3(0.047978833, 0.028082848, 0.032990005)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_e17ga"]
+size = Vector3(0.39868164, 0.11376953, 0.9425049)
 
 [node name="Obstacle6" type="AnimatableBody3D" unique_id=1484113393 groups=["obstacle"]]
 transform = Transform3D(3.275, 0, 0, 0, 3.275, 0, 0, 0, 3.275, 0, 0, 0)
@@ -20,8 +23,16 @@ transform = Transform3D(1.9999659, 0, 0, 0, 1.9999659, 0, 0, 0, 1.9999659, 0.061
 shape = SubResource("BoxShape3D_hoers")
 
 [node name="CollisionShape3D4" type="CollisionShape3D" parent="." unique_id=985746991]
-transform = Transform3D(1.9999726, 0, 0, 0, 1.9999726, 0, 0, 0, 1.9999726, -0.079043716, 0.04883522, 0.13582167)
+transform = Transform3D(1.9999492, 0, 0, 0, 1.9999492, 0, 0, 0, 1.9999492, -0.079043716, 0.048835214, 0.16295192)
 shape = SubResource("BoxShape3D_hoers")
 
 [node name="Tree_Bare_2_B_Color12" parent="." unique_id=1561440542 instance=ExtResource("1_e17ga")]
 transform = Transform3D(0.15999997, 0, 0, 0, -0.0048219687, 0.15992723, 0, -0.15992723, -0.0048219687, 0, 0.036398932, 0.37442753)
+
+[node name="Area3D" type="Area3D" parent="." unique_id=807841733 groups=["near_trigger"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.20836523, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=2028986131]
+transform = Transform3D(0.99992925, 0, 0, 0, 0.99992925, 0, 0, 0, 0.99992925, 0, -0.1940838, -0.013121653)
+shape = SubResource("BoxShape3D_e17ga")
+debug_color = Color(0.26299343, 0.63440275, 3.85046e-07, 0.41960785)

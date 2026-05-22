@@ -14,9 +14,14 @@ func bpm_to_interonset_ms(bpm: float) -> float:
 func change_song(path: String, bpm: float):
 	last_onset = 0
 	beat_count = 0
-	current_song = AudioStreamOggVorbis.load_from_file(path)
+	current_song = AudioStreamMP3.load_from_file(path)
 	current_interonset_ms = bpm_to_interonset_ms(bpm)
 	set_stream(current_song)
+
+func restart() -> void:
+	last_onset = 0
+	beat_count = 0
+	play()
 
 func _ready():
 	pass

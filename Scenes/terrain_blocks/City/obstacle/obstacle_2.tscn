@@ -4,7 +4,13 @@
 [ext_resource type="PackedScene" uid="uid://bbdo4mv7vhdm4" path="res://Assets/gltf/car_sedan.gltf" id="2_aylqi"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_x8nsr"]
-size = Vector3(1.875351, 0.50783694, 1.7647095)
+size = Vector3(1.7731247, 0.50783694, 0.734375)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_os2t8"]
+size = Vector3(1.4775391, 0.27442628, 0.71069336)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3dyp5"]
+size = Vector3(2.5390625, 0.5107422, 2.2438965)
 
 [node name="Obstacle2" type="AnimatableBody3D" unique_id=955448129 groups=["obstacle"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.048291564, 0)
@@ -16,5 +22,17 @@ transform = Transform3D(-8.742278e-08, 0, 2, 0, 2, 0, -2, 0, -8.742278e-08, -0.1
 transform = Transform3D(-9.201247e-08, 0, -2.105, 0, 2.105, 0, 2.105, 0, -9.201247e-08, 0.10189998, 0.082203746, 0.46165013)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1490398746]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.045448303, 0.19239505, 0.025665283)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.09656143, 0.19239505, 0.47937775)
 shape = SubResource("BoxShape3D_x8nsr")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="." unique_id=1734470749]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.14205074, 0.11670533, -0.44855595)
+shape = SubResource("BoxShape3D_os2t8")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=1192435218 groups=["near_trigger"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.20836523, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1115477540]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0043945313, 0)
+shape = SubResource("BoxShape3D_3dyp5")
+debug_color = Color(0.26299343, 0.63440275, 3.85046e-07, 0.41960785)

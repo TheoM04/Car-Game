@@ -3,7 +3,10 @@
 [ext_resource type="PackedScene" uid="uid://dbryn3knl85gm" path="res://Assets/gltf/traffic/Crush_Barrier.glb" id="1_dw8yb"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ena47"]
-size = Vector3(0.31469727, 0.085754395, 0.25552368)
+size = Vector3(0.28027344, 0.085754395, 0.17871094)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dw8yb"]
+size = Vector3(0.4375, 0.13598633, 0.41308594)
 
 [node name="Obstacle7" type="AnimatableBody3D" unique_id=1484113393 groups=["obstacle"]]
 transform = Transform3D(3.275, 0, 0, 0, 3.275, 0, 0, 0, 3.275, 0, 0, 0)
@@ -12,5 +15,13 @@ transform = Transform3D(3.275, 0, 0, 0, 3.275, 0, 0, 0, 3.275, 0, 0, 0)
 transform = Transform3D(0.055, 0, 0, 0, -0.0005884249, 0.05499685, 0, -0.05499685, -0.0005884249, 0, 0.045707036, 0.06550264)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2103493254]
-transform = Transform3D(0.9999532, 0, 0, 0, 0.9999532, 0, 0, 0, 0.9999532, 0.0013407131, 0.04293445, -0.038681686)
+transform = Transform3D(0.9999376, 0, 0, 0, 0.9999376, 0, 0, 0, 0.9999376, 0.0013407131, 0.04293445, -0.06795429)
 shape = SubResource("BoxShape3D_ena47")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=1833248482 groups=["near_trigger"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.20836523, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1798383084]
+transform = Transform3D(0.9999527, 0, 0, 0, 0.9999527, 0, 0, 0, 0.9999527, -0.00018309928, -0.14172111, -0.040251587)
+shape = SubResource("BoxShape3D_dw8yb")
+debug_color = Color(0.26299343, 0.63440275, 3.85046e-07, 0.41960785)

@@ -36,10 +36,14 @@ material = SubResource("StandardMaterial3D_go66d")
 size = Vector3(0.2, 0.2, 0.2)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_go66d"]
-size = Vector3(0.75, 0.6, 1.65)
+size = Vector3(0.69140625, 0.6, 1.6582031)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8tfcp"]
+size = Vector3(1.0146484, 0.6, 2.0390625)
 
 [node name="Car" type="CharacterBody3D" unique_id=989504744]
 physics_interpolation_mode = 1
+axis_lock_linear_y = true
 script = ExtResource("1_1k6jk")
 
 [node name="CarMesh" parent="." unique_id=1990908043 instance=ExtResource("2_go66d")]
@@ -68,3 +72,17 @@ draw_pass_1 = SubResource("BoxMesh_1sfmx")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CrashDetector" unique_id=22497357]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.767, 0)
 shape = SubResource("BoxShape3D_go66d")
+
+[node name="NearDetector" type="Area3D" parent="." unique_id=518048421]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="NearDetector" unique_id=1298091123]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.767, 0)
+shape = SubResource("BoxShape3D_8tfcp")
+debug_color = Color(0.014381901, 0.6513567, 0, 0.41960785)
+
+[node name="CloseCallTimer" type="Timer" parent="." unique_id=622229542]
+process_callback = 0
+wait_time = 0.05
+one_shot = true
+
+[connection signal="timeout" from="CloseCallTimer" to="." method="_on_close_call_timer_timeout"]

@@ -11,6 +11,8 @@
 [ext_resource type="Script" uid="uid://bws2t2a6avveq" path="res://Scripts/terrain_block_data.gd" id="4_lgr22"]
 [ext_resource type="Script" uid="uid://w5stp5tixic3" path="res://Scripts/beat_dbg.gd" id="5_fos0i"]
 [ext_resource type="Script" uid="uid://dmdv1xdgpf84h" path="res://Scripts/health_label.gd" id="8_trn2v"]
+[ext_resource type="Script" uid="uid://bxs8iuf280fpy" path="res://Scripts/points_label.gd" id="12_5vvyt"]
+[ext_resource type="Script" uid="uid://dpt131agdtg6t" path="res://restart_prompt.gd" id="13_c6i3y"]
 
 [sub_resource type="Resource" id="Resource_c6i3y"]
 script = ExtResource("4_lgr22")
@@ -30,14 +32,14 @@ metadata/_custom_type_script = "uid://deofw0kapmced"
 [sub_resource type="Resource" id="Resource_20pc6"]
 script = ExtResource("4_lgr22")
 path = "res://Scenes/terrain_blocks/City/obstacle"
-block_size = 6.0
+block_size = 3.5
 metadata/_custom_type_script = "uid://bws2t2a6avveq"
 
 [sub_resource type="Resource" id="Resource_5vvyt"]
 script = ExtResource("4_5vvyt")
 blocks = SubResource("Resource_20pc6")
 x_offsets = Array[float]([0.0, -3.0, 3.0, 4.0, -4.0, 1.5, -1.5])
-y_offsets = Array[float]([0.5])
+y_offsets = Array[float]([0.45])
 y_rotations = Array[float]([0.0, 90.0, -90.0, 45.0, -45.0, 315.0, -315.0])
 chance = 1.0
 metadata/_custom_type_script = "uid://deofw0kapmced"
@@ -62,8 +64,8 @@ script = ExtResource("2_20pc6")
 road = SubResource("Resource_fpfj3")
 decor = SubResource("Resource_c2ibq")
 obstacles = SubResource("Resource_5vvyt")
-song = "res://Assets/music/beforethenight.ogg"
-bpm = 106.0
+song = "res://Assets/music/city.mp3"
+bpm = 110.0
 metadata/_custom_type_script = "uid://27xm8qnraae1"
 
 [sub_resource type="Resource" id="Resource_kjvhd"]
@@ -84,7 +86,7 @@ metadata/_custom_type_script = "uid://deofw0kapmced"
 [sub_resource type="Resource" id="Resource_devvj"]
 script = ExtResource("4_lgr22")
 path = "res://Scenes/terrain_blocks/Forest/obstacle"
-block_size = 6.0
+block_size = 3.5
 metadata/_custom_type_script = "uid://bws2t2a6avveq"
 
 [sub_resource type="Resource" id="Resource_3b0ty"]
@@ -101,8 +103,8 @@ script = ExtResource("2_20pc6")
 road = SubResource("Resource_fpfj3")
 decor = SubResource("Resource_5tuhn")
 obstacles = SubResource("Resource_3b0ty")
-song = "res://Assets/music/beforethenight.ogg"
-bpm = 106.0
+song = "res://Assets/music/forest.mp3"
+bpm = 100.0
 metadata/_custom_type_script = "uid://27xm8qnraae1"
 
 [sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_7dm0k"]
@@ -128,11 +130,22 @@ font_size = 30
 outline_size = 6
 outline_color = Color(0, 0, 0, 1)
 
+[sub_resource type="LabelSettings" id="LabelSettings_20pc6"]
+font_size = 38
+outline_size = 10
+outline_color = Color(0, 0, 0, 1)
+
 [sub_resource type="LabelSettings" id="LabelSettings_lgr22"]
-font_size = 42
+font_size = 59
+outline_size = 12
+outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="LabelSettings" id="LabelSettings_trn2v"]
 font_size = 62
+outline_size = 6
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 9
+shadow_color = Color(0, 0, 0, 0.24313726)
 
 [node name="Main" type="Node3D" unique_id=1971039341]
 script = ExtResource("1_lgr22")
@@ -148,10 +161,10 @@ script = ExtResource("4_cm0pq")
 fov = 91.3
 script = ExtResource("1_r0du0")
 target = NodePath("../Car")
-offset = Vector3(0, 3.5, 2.5)
+offset = Vector3(0, 3, 3)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=551519051]
-transform = Transform3D(-0.4739872, 0.48849148, -0.73260653, 0.1591736, 0.86583173, 0.4743408, 0.8660255, 0.10821982, -0.4881481, -5.3182034, 6.494243, 0)
+transform = Transform3D(-0.42571712, 0.67162436, -0.60637087, 0.26223072, 0.73294556, 0.62771475, 0.8660254, 0.108219855, -0.48814803, -5.3182034, 10.72966, 0)
 shadow_enabled = true
 shadow_opacity = 0.75
 
@@ -174,6 +187,7 @@ y_rotations = Array[float]([-89.49])
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 15)
 
 [node name="ObstaclePlacer" type="Node3D" parent="." unique_id=775446239 groups=["terrain_controller"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7.862652)
 script = ExtResource("3_3dxm6")
 render_distance = 40
 should_generate = false
@@ -188,8 +202,11 @@ lifecycle = NodePath("..")
 [node name="HUDLayer" type="CanvasLayer" parent="." unique_id=390582748]
 
 [node name="BeatLabel" type="Label" parent="HUDLayer" unique_id=2136879638]
-offset_right = 155.0
-offset_bottom = 71.0
+visible = false
+offset_left = 427.0
+offset_top = -1.0
+offset_right = 582.0
+offset_bottom = 70.0
 theme_override_font_sizes/font_size = 40
 text = "Beat"
 script = ExtResource("5_fos0i")
@@ -207,6 +224,19 @@ label_settings = SubResource("LabelSettings_03owx")
 horizontal_alignment = 2
 script = ExtResource("8_trn2v")
 
+[node name="PointsLabel" type="Label" parent="HUDLayer" unique_id=1434095291]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -107.0
+offset_right = 107.0
+offset_bottom = 51.0
+grow_horizontal = 2
+text = "Score"
+label_settings = SubResource("LabelSettings_20pc6")
+horizontal_alignment = 1
+script = ExtResource("12_5vvyt")
+
 [node name="TitleLayer" type="CanvasLayer" parent="." unique_id=1027624405]
 
 [node name="StartPrompt" type="Label" parent="TitleLayer" unique_id=1703103817]
@@ -215,13 +245,18 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -223.0
-offset_top = -163.0
-offset_right = 223.0
+offset_left = -261.0
+offset_top = -612.0
+offset_right = 261.0
 offset_bottom = -105.0
 grow_horizontal = 2
 grow_vertical = 0
-text = "Tap anywhere to start"
+text = "Be near obstacles on beat
+to get points.
+You lose health when
+running into them.
+
+Tap anywhere to start."
 label_settings = SubResource("LabelSettings_lgr22")
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -241,11 +276,15 @@ offset_bottom = 87.5
 grow_horizontal = 2
 grow_vertical = 2
 text = "Game over!
+Your score was
 Tap anywhere to restart"
 label_settings = SubResource("LabelSettings_trn2v")
 horizontal_alignment = 1
 vertical_alignment = 1
+script = ExtResource("13_c6i3y")
 
+[connection signal="beat" from="MusicPlayer" to="." method="_on_music_player_beat"]
 [connection signal="beat" from="MusicPlayer" to="HUDLayer/BeatLabel" method="_on_music_player_beat"]
 [connection signal="finished" from="MusicPlayer" to="." method="_on_music_player_finished"]
+[connection signal="close_call" from="Car" to="." method="_on_car_close_call"]
 [connection signal="health_update" from="Car" to="HUDLayer/HealthLabel" method="_on_car_health_update"]

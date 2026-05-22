@@ -7,8 +7,12 @@ var state
 @export var environments: Array[Env]
 
 @onready var title_layer: CanvasLayer = get_node("TitleLayer")
+
 @onready var hud_layer: CanvasLayer = get_node("HUDLayer")
+@onready var points_label = get_node("HUDLayer/PointsLabel")
+
 @onready var gameover_layer: CanvasLayer = get_node("GameOverLayer")
+@onready var restart_label = get_node("GameOverLayer/RestartPrompt")
 
 @onready var car: Node3D = get_node("Car")
 
@@ -19,6 +23,13 @@ var state
 var terrain_controllers: Array[Node]
 
 @onready var music_player: MusicPlayer = get_node("MusicPlayer")
+
+var last_beat_ts: int
+var pending_close_call_ts: int
+var points = 0:
+	set(new):
+		points_label.set_points(new)
+		points = new
 
 func apply_env(env: Env):
 	road_controller.terrain_blocks = [env.road.blocks]
@@ -83,18 +94,20 @@ func title():
 	state = State.TITLE
 
 func play():
+	points = 0
+
 	for terrain in terrain_controllers:
 		terrain.should_move = true
 		terrain.set_physics_process(true)
 
 	obstacle_placer.clear()
-	obstacle_placer.should_generate = true
+	obstacle_placer.should_generate = false
 	
 	title_layer.visible = false
 	hud_layer.visible = true
 	gameover_layer.visible = false
 
-	music_player.play()
+	music_player.restart()
 
 	car.set_process_unhandled_input(true)
 
@@ -107,6 +120,8 @@ func game_over():
 		terrain.should_move = false
 		terrain.set_physics_process(false)
 
+	restart_label.set_points(points)
+
 	hud_layer.visible = false
 	gameover_layer.visible = true
 
@@ -114,4 +129,11 @@ func game_over():
 
 func _on_music_player_finished() -> void:
 	apply_env(environments.pick_random())
-	music_player.play()
+	music_player.restart()
+
+func _on_music_player_beat(n: int) -> void:
+	if n == 1 and state == State.PLAY:
+		obstacle_placer.should_generate = true
+
+	if car.near:
+		points += 1

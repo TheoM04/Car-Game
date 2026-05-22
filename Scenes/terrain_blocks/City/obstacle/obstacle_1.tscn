@@ -5,10 +5,15 @@
 [ext_resource type="PackedScene" uid="uid://iuugdiyrgwra" path="res://Assets/gltf/streetlight.gltf" id="3_7nm06"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_x8nsr"]
-size = Vector3(2.3864136, 0.50783694, 0.7578125)
+size = Vector3(1.686203, 0.50783694, 0.7578125)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_k1pjb"]
+size = Vector3(0.25024414, 0.50783694, 0.26953125)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nd47u"]
+size = Vector3(2.4659896, 0.515625, 1.133706)
 
 [node name="Obstacle1" type="AnimatableBody3D" unique_id=154144016 groups=["obstacle"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.01690656, 0)
 
 [node name="car_hatchback2" parent="." unique_id=198184614 instance=ExtResource("1_fc5b6")]
 transform = Transform3D(-8.742278e-08, 0, 2, 0, 2, 0, -2, 0, -8.742278e-08, -0.13853508, 0.106725335, -1.5800133e-08)
@@ -20,5 +25,17 @@ transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 1, -0.0070322845, 0)
 transform = Transform3D(-8.742278e-08, 0, 2, 0, 2, 0, -2, 0, -8.742278e-08, -1, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1490398746]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.056793213, 0.19239505, -0.0056152344)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2063675, 0.19239505, -0.0056152344)
 shape = SubResource("BoxShape3D_x8nsr")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="." unique_id=1529500069]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0281916, 0.19239505, -0.0056152344)
+shape = SubResource("BoxShape3D_k1pjb")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=297978518 groups=["near_trigger"]]
+monitoring = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1839242328]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.07120538, 0.2421875, -0.014881909)
+shape = SubResource("BoxShape3D_nd47u")
+debug_color = Color(0.1337128, 0.6467104, 0, 0.41960785)

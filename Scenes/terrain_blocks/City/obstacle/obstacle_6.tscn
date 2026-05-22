@@ -5,6 +5,9 @@
 [sub_resource type="BoxShape3D" id="BoxShape3D_g86fc"]
 size = Vector3(1.1061707, 1.6289063, 0.15878296)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_dit6r"]
+size = Vector3(1.4919434, 1.7340088, 0.53027344)
+
 [node name="Obstacle6" type="AnimatableBody3D" unique_id=743653627 groups=["obstacle"]]
 
 [node name="Wood_Road_Block_Small_002" parent="." unique_id=1884196549 instance=ExtResource("1_g86fc")]
@@ -13,3 +16,11 @@ transform = Transform3D(0.185, 0, 0, 0, 0.185, 0, 0, 0, 0.185, 0, 0.06666036, 0)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=42022298]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.002456665, 0.758667, 0.0031585693)
 shape = SubResource("BoxShape3D_g86fc")
+
+[node name="Area3D" type="Area3D" parent="." unique_id=294180762 groups=["near_trigger"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.20836523, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1309725571]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.61602783, 0)
+shape = SubResource("BoxShape3D_dit6r")
+debug_color = Color(0.26299343, 0.63440275, 3.85046e-07, 0.41960785)
