@@ -6,10 +6,9 @@
 size = Vector3(1.1061707, 1.6289063, 0.15878296)
 
 [node name="Obstacle6" type="AnimatableBody3D" unique_id=743653627 groups=["obstacle"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.06807172, 0)
 
 [node name="Wood_Road_Block_Small_002" parent="." unique_id=1884196549 instance=ExtResource("1_g86fc")]
-transform = Transform3D(0.185, 0, 0, 0, 0.185, 0, 0, 0, 0.185, 0, 0, 0)
+transform = Transform3D(0.185, 0, 0, 0, 0.185, 0, 0, 0, 0.185, 0, 0.06666036, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=42022298]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.002456665, 0.758667, 0.0031585693)

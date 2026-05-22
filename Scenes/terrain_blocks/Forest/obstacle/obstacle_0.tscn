@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://dlgnjpyhq7h04"]
+
+[ext_resource type="PackedScene" uid="uid://bs3djdhuk7g4c" path="res://Assets/gltf/car_police.gltf" id="1_lb0hn"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lb0hn"]
+size = Vector3(0.36914063, 0.4194336, 0.8947754)
+
+[node name="Obstacle0" type="AnimatableBody3D" unique_id=1484113393]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=240479792 groups=["obstacle"]]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.41279048, -0.012451172)
+shape = SubResource("BoxShape3D_lb0hn")
+
+[node name="car_police2" parent="." unique_id=882857755 instance=ExtResource("1_lb0hn")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0.12226313, 0)

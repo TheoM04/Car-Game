@@ -14,11 +14,9 @@ var terrain_belt: Array[AnimatableBody3D] = []
 @export var terrain_velocity: float = 10.0
 
 @export var render_distance = 80
-## The number of blocks to keep rendered to the viewport
-var num_of_blocks_to_spawn
 
 ## Path to directory holding the terrain block scenes
-@export var terrian_blocks: Array[TerrainBlockData]
+@export var terrain_blocks: Array[TerrainBlockData]
 var block_size: float
 
 var should_move = true
@@ -27,38 +25,25 @@ var should_move = true
 @export var x_offsets: Array[float] = [0]
 @export var y_offsets: Array[float] = [0]
 @export var y_rotations: Array[float] = [0]
-
 @export var place_chance: float = 1
 
-#Enviroments
-var enviroments = {}
-
 func _ready() -> void:
-	_load_terrain_scenes(terrian_blocks)
-	
-	num_of_blocks_to_spawn = ceil(render_distance / block_size)
-	print("\n\n---------------"+name+"---------------\n")
-	print("	render distance: %.2f\n	block size: %.2f\n	num_of_blocks_to_spawn: %.2f\n"%[render_distance,block_size,num_of_blocks_to_spawn])
-	
-	_init_blocks(num_of_blocks_to_spawn)
-
-	print("\n	enviroments:")
-	for key in enviroments:
-		print("		",key.split("/")[-1] + ": ", len(enviroments[key]))
+	load_terrain_scenes()
 
 func _physics_process(delta: float) -> void:
 	_progress_terrain(delta)
 
-func _load_terrain_scenes(target_blocks: Array[TerrainBlockData]) -> void:
-	for block in target_blocks:
+func load_terrain_scenes() -> void:
+	TerrainBlocks.clear()
+
+	for block in terrain_blocks:
 		block_size = block.block_size
 		var path: String = block.path
 		var dir = DirAccess.open(path)
 		if not dir:
 			print("Error: Could not open directory: ", path)
 			continue
-		
-		enviroments[path] = []
+
 		for file_name in dir.get_files():
 			var scene_path: String = file_name
 			
@@ -72,7 +57,6 @@ func _load_terrain_scenes(target_blocks: Array[TerrainBlockData]) -> void:
 				print("    Loading terrain block scene: ", full_path)
 				
 				TerrainBlocks.append(load(full_path))
-				enviroments[path].append(scene_path)
 
 func _pick_block():
 	if should_generate and randf() < place_chance:
@@ -80,22 +64,31 @@ func _pick_block():
 	else:
 		return AnimatableBody3D.new()
 
-func _init_blocks(number_of_blocks: int) -> void:
-	for block_index in number_of_blocks:
+func _fill_to_edge():
+	var prev_block = null if terrain_belt.is_empty() else terrain_belt[-1]
+
+	while terrain_belt.is_empty() or terrain_belt[-1].position.z > -render_distance:
 		var block = _pick_block()
-		if block_index == 0:
+
+		if terrain_belt.is_empty():
 			block.position.z = block_size/2
 		else:
-			_append_to_far_edge(terrain_belt[block_index-1], block)
+			_append_to_far_edge(prev_block, block)
+
 		add_child(block)
 		terrain_belt.append(block)
 
+		prev_block = block
 
 func _progress_terrain(delta: float) -> void:
 	for block in terrain_belt:
 		block.position.z += terrain_velocity * int(should_move) * delta
-
-	if terrain_belt[0].position.z >= block_size*3/2:
+	
+	_fill_to_edge()
+	
+	if terrain_belt.is_empty():
+		return
+	elif terrain_belt[0].position.z >= block_size*3/2:
 		var last_terrain = terrain_belt[-1]
 		var first_terrain = terrain_belt.pop_front()
 	
@@ -116,6 +109,3 @@ func clear():
 	for block in terrain_belt:
 		block.free()
 	terrain_belt.clear()
-	
-	should_generate = false
-	_init_blocks(num_of_blocks_to_spawn)

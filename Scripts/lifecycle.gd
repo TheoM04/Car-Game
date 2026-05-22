@@ -4,19 +4,51 @@ enum State { TITLE, PLAY, GAMEOVER }
 
 var state
 
-@onready var music_player: AudioStreamPlayer = get_node("MusicPlayer")
+@export var environments: Array[Env]
+
 @onready var title_layer: CanvasLayer = get_node("TitleLayer")
 @onready var hud_layer: CanvasLayer = get_node("HUDLayer")
 @onready var gameover_layer: CanvasLayer = get_node("GameOverLayer")
+
 @onready var car: Node3D = get_node("Car")
 
-@onready var obstacle_placer: Node3D = get_node("ObstaclePlacer")
-
+@onready var road_controller: TerrainController = get_node("RoadController")
+@onready var left_decor_controller: TerrainController = get_node("LeftDecorationController")
+@onready var right_decor_controller: TerrainController = get_node("RightDecorationController")
+@onready var obstacle_placer: TerrainController = get_node("ObstaclePlacer")
 var terrain_controllers: Array[Node]
+
+@onready var music_player: MusicPlayer = get_node("MusicPlayer")
+
+func apply_env(env: Env):
+	road_controller.terrain_blocks = [env.road.blocks]
+	road_controller.load_terrain_scenes()
+	
+	left_decor_controller.terrain_blocks = [env.decor.blocks]
+	left_decor_controller.x_offsets.assign(env.decor.x_offsets.map(func (x): return -x))
+	left_decor_controller.y_offsets = env.decor.y_offsets
+	left_decor_controller.y_rotations.assign(env.decor.y_rotations.map(func (d): return -d))
+	left_decor_controller.load_terrain_scenes()
+	
+	right_decor_controller.terrain_blocks = [env.decor.blocks]
+	right_decor_controller.x_offsets = env.decor.x_offsets
+	right_decor_controller.y_offsets = env.decor.y_offsets
+	right_decor_controller.y_rotations = env.decor.y_rotations
+	right_decor_controller.load_terrain_scenes()
+	
+	obstacle_placer.terrain_blocks = [env.obstacles.blocks]
+	obstacle_placer.x_offsets = env.obstacles.x_offsets
+	obstacle_placer.y_offsets = env.obstacles.y_offsets
+	obstacle_placer.y_rotations = env.obstacles.y_rotations
+	obstacle_placer.place_chance = env.obstacles.chance
+	obstacle_placer.load_terrain_scenes()
+
+	music_player.change_song(env.song, env.bpm)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	terrain_controllers = get_tree().get_nodes_in_group("terrain_controller")
+	apply_env(environments.pick_random())
 	title()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -41,10 +73,8 @@ func title():
 	car.set_process_unhandled_input(false)
 
 	music_player.stop()
-	
-	obstacle_placer.should_move = false
+
 	obstacle_placer.should_generate = false
-	obstacle_placer.set_physics_process(false)
 
 	title_layer.visible = true
 	hud_layer.visible = false
@@ -64,7 +94,6 @@ func play():
 	hud_layer.visible = true
 	gameover_layer.visible = false
 
-	music_player.change_song(0)
 	music_player.play()
 
 	car.set_process_unhandled_input(true)
@@ -82,3 +111,7 @@ func game_over():
 	gameover_layer.visible = true
 
 	state = State.GAMEOVER
+
+func _on_music_player_finished() -> void:
+	apply_env(environments.pick_random())
+	music_player.play()

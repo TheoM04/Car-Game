@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://e43wj5n2h6pf"]
+
+[ext_resource type="PackedScene" uid="uid://dbryn3knl85gm" path="res://Assets/gltf/traffic/Crush_Barrier.glb" id="1_dw8yb"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ena47"]
+size = Vector3(0.31469727, 0.085754395, 0.25552368)
+
+[node name="Obstacle7" type="AnimatableBody3D" unique_id=1484113393 groups=["obstacle"]]
+transform = Transform3D(3.275, 0, 0, 0, 3.275, 0, 0, 0, 3.275, 0, 0, 0)
+
+[node name="Crush_Barrier" parent="." unique_id=1819187784 instance=ExtResource("1_dw8yb")]
+transform = Transform3D(0.055, 0, 0, 0, -0.0005884249, 0.05499685, 0, -0.05499685, -0.0005884249, 0, 0.045707036, 0.06550264)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2103493254]
+transform = Transform3D(0.9999532, 0, 0, 0, 0.9999532, 0, 0, 0, 0.9999532, 0.0013407131, 0.04293445, -0.038681686)
+shape = SubResource("BoxShape3D_ena47")

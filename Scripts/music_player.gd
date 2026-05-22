@@ -1,33 +1,22 @@
+class_name MusicPlayer
 extends AudioStreamPlayer
 
 signal beat(n: int)
 
-class Song:
-	var _stream: AudioStream
-	var _bpm: float
-	
-	func _init(stream: AudioStream, bpm: float) -> void:
-		self._stream = stream
-		self._bpm = bpm
-
-var songs:Array[Song] = [
-	Song.new(AudioStreamOggVorbis.load_from_file("res://Assets/music/beforethenight.ogg"), 106),
-]
-
 var last_onset = 0
 var beat_count = 0
-var current_song: Song
+var current_song: AudioStream
 var current_interonset_ms: float
 
 func bpm_to_interonset_ms(bpm: float) -> float:
 	return 60 / bpm
 
-func change_song(idx: int):
+func change_song(path: String, bpm: float):
 	last_onset = 0
 	beat_count = 0
-	current_song = songs[idx]
-	current_interonset_ms = bpm_to_interonset_ms(current_song._bpm)
-	set_stream(current_song._stream)
+	current_song = AudioStreamOggVorbis.load_from_file(path)
+	current_interonset_ms = bpm_to_interonset_ms(bpm)
+	set_stream(current_song)
 
 func _ready():
 	pass

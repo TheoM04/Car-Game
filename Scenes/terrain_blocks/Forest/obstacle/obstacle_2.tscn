@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://b42qy62ogw6y1"]
+
+[ext_resource type="PackedScene" uid="uid://dvukbnnqaoh1v" path="res://Assets/gltf/Rock_1_C_Color1.gltf" id="1_o8uvo"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lb0hn"]
+size = Vector3(0.2079544, 0.27526855, 0.24240208)
+
+[node name="Obstacle2" type="AnimatableBody3D" unique_id=1484113393 groups=["obstacle"]]
+transform = Transform3D(1.96, 0, 0, 0, 1.96, 0, 0, 0, 1.96, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=240479792]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0.014442444, 0.26862544, -0.061093986)
+shape = SubResource("BoxShape3D_lb0hn")
+
+[node name="Rock_1_C_Color12" parent="." unique_id=1411433793 instance=ExtResource("1_o8uvo")]

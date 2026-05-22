@@ -2,13 +2,108 @@
 
 [ext_resource type="Script" uid="uid://bu2dpeg0vkl1k" path="res://Scripts/lifecycle.gd" id="1_lgr22"]
 [ext_resource type="Script" uid="uid://c301bkxn2gvjj" path="res://Scripts/FollowCamera.gd.gd" id="1_r0du0"]
+[ext_resource type="Script" uid="uid://27xm8qnraae1" path="res://Scripts/env.gd" id="2_20pc6"]
 [ext_resource type="PackedScene" uid="uid://cbhkuopky11b4" path="res://Scenes/Car.tscn" id="2_r0du0"]
 [ext_resource type="Script" uid="uid://b7ff366dbhcth" path="res://Scripts/terrain_controller.gd" id="3_3dxm6"]
 [ext_resource type="PackedScene" uid="uid://dvk5mpyjgv5x7" path="res://Scenes/terrain_controller.tscn" id="3_r0du0"]
+[ext_resource type="Script" uid="uid://deofw0kapmced" path="res://Scripts/tcconfig.gd" id="4_5vvyt"]
 [ext_resource type="Script" uid="uid://cb7lpvwtlsy2" path="res://Scripts/music_player.gd" id="4_cm0pq"]
-[ext_resource type="Script" path="res://Scripts/terrain_block_data.gd" id="4_lgr22"]
+[ext_resource type="Script" uid="uid://bws2t2a6avveq" path="res://Scripts/terrain_block_data.gd" id="4_lgr22"]
 [ext_resource type="Script" uid="uid://w5stp5tixic3" path="res://Scripts/beat_dbg.gd" id="5_fos0i"]
 [ext_resource type="Script" uid="uid://dmdv1xdgpf84h" path="res://Scripts/health_label.gd" id="8_trn2v"]
+
+[sub_resource type="Resource" id="Resource_c6i3y"]
+script = ExtResource("4_lgr22")
+path = "res://Scenes/terrain_blocks/City/decoration"
+block_size = 5.0
+metadata/_custom_type_script = "uid://bws2t2a6avveq"
+
+[sub_resource type="Resource" id="Resource_c2ibq"]
+script = ExtResource("4_5vvyt")
+blocks = SubResource("Resource_c6i3y")
+x_offsets = Array[float]([9.0])
+y_offsets = Array[float]([0.22])
+y_rotations = Array[float]([-89.53])
+chance = 1.0
+metadata/_custom_type_script = "uid://deofw0kapmced"
+
+[sub_resource type="Resource" id="Resource_20pc6"]
+script = ExtResource("4_lgr22")
+path = "res://Scenes/terrain_blocks/City/obstacle"
+block_size = 6.0
+metadata/_custom_type_script = "uid://bws2t2a6avveq"
+
+[sub_resource type="Resource" id="Resource_5vvyt"]
+script = ExtResource("4_5vvyt")
+blocks = SubResource("Resource_20pc6")
+x_offsets = Array[float]([0.0, -3.0, 3.0, 4.0, -4.0, 1.5, -1.5])
+y_offsets = Array[float]([0.5])
+y_rotations = Array[float]([0.0, 90.0, -90.0, 45.0, -45.0, 315.0, -315.0])
+chance = 1.0
+metadata/_custom_type_script = "uid://deofw0kapmced"
+
+[sub_resource type="Resource" id="Resource_j4qnp"]
+script = ExtResource("4_lgr22")
+path = "res://Scenes/terrain_blocks/City/road"
+block_size = 17.0
+metadata/_custom_type_script = "uid://bws2t2a6avveq"
+
+[sub_resource type="Resource" id="Resource_fpfj3"]
+script = ExtResource("4_5vvyt")
+blocks = SubResource("Resource_j4qnp")
+x_offsets = Array[float]([0.0])
+y_offsets = Array[float]([0.0])
+y_rotations = Array[float]([0.0])
+chance = 1.0
+metadata/_custom_type_script = "uid://deofw0kapmced"
+
+[sub_resource type="Resource" id="Resource_sc1dx"]
+script = ExtResource("2_20pc6")
+road = SubResource("Resource_fpfj3")
+decor = SubResource("Resource_c2ibq")
+obstacles = SubResource("Resource_5vvyt")
+song = "res://Assets/music/beforethenight.ogg"
+bpm = 106.0
+metadata/_custom_type_script = "uid://27xm8qnraae1"
+
+[sub_resource type="Resource" id="Resource_kjvhd"]
+script = ExtResource("4_lgr22")
+path = "res://Scenes/terrain_blocks/Forest/decoration"
+block_size = 2.5
+metadata/_custom_type_script = "uid://bws2t2a6avveq"
+
+[sub_resource type="Resource" id="Resource_5tuhn"]
+script = ExtResource("4_5vvyt")
+blocks = SubResource("Resource_kjvhd")
+x_offsets = Array[float]([7.5])
+y_offsets = Array[float]([0.3])
+y_rotations = Array[float]([-89.53])
+chance = 1.0
+metadata/_custom_type_script = "uid://deofw0kapmced"
+
+[sub_resource type="Resource" id="Resource_devvj"]
+script = ExtResource("4_lgr22")
+path = "res://Scenes/terrain_blocks/Forest/obstacle"
+block_size = 6.0
+metadata/_custom_type_script = "uid://bws2t2a6avveq"
+
+[sub_resource type="Resource" id="Resource_3b0ty"]
+script = ExtResource("4_5vvyt")
+blocks = SubResource("Resource_devvj")
+x_offsets = Array[float]([0.0, -3.0, 3.0, 4.0, -4.0, 1.5, -1.5])
+y_offsets = Array[float]([0.4])
+y_rotations = Array[float]([0.0, 90.0, -90.0, 45.0, -45.0, 315.0, -315.0])
+chance = 1.0
+metadata/_custom_type_script = "uid://deofw0kapmced"
+
+[sub_resource type="Resource" id="Resource_2gh4u"]
+script = ExtResource("2_20pc6")
+road = SubResource("Resource_fpfj3")
+decor = SubResource("Resource_5tuhn")
+obstacles = SubResource("Resource_3b0ty")
+song = "res://Assets/music/beforethenight.ogg"
+bpm = 106.0
+metadata/_custom_type_script = "uid://27xm8qnraae1"
 
 [sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_7dm0k"]
 
@@ -24,26 +119,9 @@ glow_intensity = 0.15
 fog_enabled = true
 fog_light_color = Color(0.6720824, 0.47163177, 0.3010991, 1)
 
-[sub_resource type="Resource" id="Resource_trn2v"]
-script = ExtResource("4_lgr22")
-path = "res://Scenes/terrain_blocks/City/forest_decoration_left"
-block_size = 2.5
-
 [sub_resource type="Resource" id="Resource_03owx"]
 script = ExtResource("4_lgr22")
-path = "res://Scenes/terrain_blocks/Village/village_deco_right"
-block_size = 5.0
-metadata/_custom_type_script = "uid://bws2t2a6avveq"
-
-[sub_resource type="Resource" id="Resource_wkp8b"]
-script = ExtResource("4_lgr22")
-path = "res://Scenes/terrain_blocks/City/city_road"
-block_size = 17.0
-
-[sub_resource type="Resource" id="Resource_20pc6"]
-script = ExtResource("4_lgr22")
-path = "res://Scenes/obstacles/city"
-block_size = 2.55
+path = "res://Scenes/terrain_blocks/City/decoration"
 
 [sub_resource type="LabelSettings" id="LabelSettings_03owx"]
 font_size = 30
@@ -58,6 +136,7 @@ font_size = 62
 
 [node name="Main" type="Node3D" unique_id=1971039341]
 script = ExtResource("1_lgr22")
+environments = Array[ExtResource("2_20pc6")]([SubResource("Resource_sc1dx"), SubResource("Resource_2gh4u")])
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1617015305]
 environment = SubResource("Environment_0xm2m")
@@ -72,14 +151,14 @@ target = NodePath("../Car")
 offset = Vector3(0, 3.5, 2.5)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=551519051]
-transform = Transform3D(-0.5, 0.18744218, -0.84549713, 0, 0.9762959, 0.21643962, 0.8660253, 0.10821981, -0.48814806, 0, 0, 0)
+transform = Transform3D(-0.4739872, 0.48849148, -0.73260653, 0.1591736, 0.86583173, 0.4743408, 0.8660255, 0.10821982, -0.4881481, -5.3182034, 6.494243, 0)
 shadow_enabled = true
 shadow_opacity = 0.75
 
 [node name="LeftDecorationController" type="Node3D" parent="." unique_id=1040882048 groups=["terrain_controller"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 15)
 script = ExtResource("3_3dxm6")
-terrian_blocks = Array[ExtResource("4_lgr22")]([SubResource("Resource_trn2v")])
+terrain_blocks = Array[ExtResource("4_lgr22")]([SubResource("Resource_03owx")])
 x_offsets = Array[float]([-7.62])
 y_offsets = Array[float]([0.45])
 y_rotations = Array[float]([89.525])
@@ -87,23 +166,20 @@ y_rotations = Array[float]([89.525])
 [node name="RightDecorationController" type="Node3D" parent="." unique_id=346248319 groups=["terrain_controller"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 15)
 script = ExtResource("3_3dxm6")
-terrian_blocks = Array[ExtResource("4_lgr22")]([SubResource("Resource_03owx")])
 x_offsets = Array[float]([8.79])
 y_offsets = Array[float]([0.24])
 y_rotations = Array[float]([-89.49])
 
 [node name="RoadController" parent="." unique_id=563873316 instance=ExtResource("3_r0du0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 15)
-terrian_blocks = Array[ExtResource("4_lgr22")]([SubResource("Resource_wkp8b")])
 
 [node name="ObstaclePlacer" type="Node3D" parent="." unique_id=775446239 groups=["terrain_controller"]]
 script = ExtResource("3_3dxm6")
 render_distance = 40
-terrian_blocks = Array[ExtResource("4_lgr22")]([SubResource("Resource_20pc6")])
 should_generate = false
 x_offsets = Array[float]([0.0, -3.0, 3.0, 4.0, -4.0, 1.5, -1.5])
 y_offsets = Array[float]([0.5])
-y_rotations = Array[float]([0.0, 90.0, -90.0, 45.0, -45.0])
+y_rotations = Array[float]([0.0, 90.0, -90.0, 45.0, -45.0, 315.0, -315.0])
 
 [node name="Car" parent="." unique_id=1049898143 node_paths=PackedStringArray("lifecycle") instance=ExtResource("2_r0du0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 10)
@@ -122,7 +198,8 @@ script = ExtResource("5_fos0i")
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -182.0
+offset_left = -200.0
+offset_right = -18.0
 offset_bottom = 48.0
 grow_horizontal = 0
 text = "HEALTH"
@@ -170,4 +247,5 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [connection signal="beat" from="MusicPlayer" to="HUDLayer/BeatLabel" method="_on_music_player_beat"]
+[connection signal="finished" from="MusicPlayer" to="." method="_on_music_player_finished"]
 [connection signal="health_update" from="Car" to="HUDLayer/HealthLabel" method="_on_car_health_update"]

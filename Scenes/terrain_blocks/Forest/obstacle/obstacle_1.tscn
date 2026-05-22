@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://dxt6m1egwamsm"]
+
+[ext_resource type="PackedScene" uid="uid://cdy51gxsjc4p1" path="res://Assets/gltf/Tree_2_A_Color1.gltf" id="1_rlr6w"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rlr6w"]
+size = Vector3(0.08758545, 0.19824219, 1.1421814)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lb0hn"]
+size = Vector3(1.1659851, 1.1691895, 1.4363747)
+
+[node name="Obstacle1" type="AnimatableBody3D" unique_id=1484113393 groups=["obstacle"]]
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="." unique_id=1309166458]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0.05999756, 0.22040766, 0.022735596)
+shape = SubResource("BoxShape3D_rlr6w")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=240479792]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.02381897, 0.7876684, 1.146691)
+shape = SubResource("BoxShape3D_lb0hn")
+
+[node name="Tree_2_A_Color12" parent="." unique_id=1514798024 instance=ExtResource("1_rlr6w")]
+transform = Transform3D(0.68, 0, 0, 0, 0.16423048, -0.65986997, 0, 0.65986997, 0.16423048, 0.07406843, 0.09446323, -0.9965973)

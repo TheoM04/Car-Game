@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://pmc64o7451i8"]
+
+[ext_resource type="PackedScene" uid="uid://dy4mbb6p0m28y" path="res://Assets/gltf/Tree_4_B_Color1.gltf" id="1_hoers"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_lb0hn"]
+size = Vector3(0.10191716, 0.15435028, 0.16798484)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3uh82"]
+size = Vector3(0.03043984, 0.05396843, 0.3147013)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hoers"]
+size = Vector3(0.044698536, 0.05396843, 0.060120635)
+
+[node name="Obstacle5" type="AnimatableBody3D" unique_id=1484113393 groups=["obstacle"]]
+transform = Transform3D(3.275, 0, 0, 0, 3.275, 0, 0, 0, 3.275, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=240479792]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0.032249644, 0.1712515, -0.3156602)
+shape = SubResource("BoxShape3D_lb0hn")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="." unique_id=569681372]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0.004894966, 0.093384, 0.13568741)
+shape = SubResource("BoxShape3D_3uh82")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="." unique_id=1470988915]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0.14559928, 0.093384, 0.08057366)
+shape = SubResource("BoxShape3D_hoers")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="." unique_id=985746991]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -0.14591183, 0.093384, -0.007685791)
+shape = SubResource("BoxShape3D_hoers")
+
+[node name="Tree_4_B_Color12" parent="." unique_id=1491263282 instance=ExtResource("1_hoers")]
+transform = Transform3D(0.15000005, 0, 0, 0, 0.035886776, 0.14564385, 0, -0.14564385, 0.035886776, 0, 0.04398955, 0.42139286)
